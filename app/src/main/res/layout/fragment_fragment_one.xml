@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+
+    android:layout_height="match_parent"
+    tools:context=".FragmentOne">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+    <RelativeLayout
+        android:id="@+id/slider"
+        android:layout_width="match_parent"
+
+        android:scaleType="centerCrop"
+        android:layout_height="400dp"
+        >
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewPager1"
+            android:layout_width="match_parent"
+
+
+            android:layout_height="250dp">
+
+
+        </android.support.v4.view.ViewPager>
+
+        <LinearLayout
+            android:id="@+id/SliderDots1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="140dp"
+
+            android:gravity="center"
+            android:orientation="horizontal">
+
+
+
+
+        </LinearLayout>
+
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="280dp"
+            android:layout_weight="8"
+            android:columnCount="2"
+            android:rowCount="1"
+            android:padding="14dp"
+            android:layout_marginTop="140dp"
+
+
+            >
+            <android.support.v7.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="1"
+                android:layout_marginRight="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginBottom="8dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="8dp"
+
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal|center_vertical"
+
+
+                    android:orientation="vertical"
+
+                    >
+                    <ImageButton
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/women6"
+                        android:id="@+id/womenimagebtn"
+
+                        android:scaleType="fitXY"
+                        android:layout_marginTop="30dp"
+                        android:background="@color/colorPrimary"
+                        android:layout_gravity="center_horizontal"
+                        />
+
+
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:text="Women's Collection"
+                    android:textColor="#000000"
+                    android:textSize="12dp"
+                    />
+
+
+            </android.support.v7.widget.CardView>
+            <android.support.v7.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="1"
+                android:layout_marginRight="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginBottom="8dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="8dp"
+
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal|center_vertical"
+
+                    android:orientation="vertical"
+
+                    >
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/product1"
+                        android:layout_marginTop="30dp"
+                        android:scaleType="fitXY"
+                        android:id="@+id/menimagebtn"
+                        android:background="@color/colorPrimary"
+                        android:layout_gravity="center_horizontal"
+                        />
+
+
+
+                </LinearLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:text="Men's Collection"
+                    android:textColor="#000000"
+                    android:textSize="12dp"
+                    />
+
+
+
+            </android.support.v7.widget.CardView>
+
+
+
+        </GridLayout>
+
+
+    </RelativeLayout>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Recent"
+        android:textColor="#000000"
+        android:textSize="20dp"
+        android:layout_marginLeft="10dp"
+
+        />
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:layout_marginTop="5dp"
+        android:outlineProvider="bounds"
+        android:clipToPadding="false"
+
+        android:id="@+id/recyclerViewRecent"
+        android:orientation="horizontal">
+
+    </android.support.v7.widget.RecyclerView>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Most Popular"
+        android:textColor="#000000"
+        android:textSize="20dp"
+        android:layout_marginLeft="10dp"
+
+        />
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+
+        android:layout_marginTop="5dp"
+        android:outlineProvider="bounds"
+        android:clipToPadding="false"
+
+        android:id="@+id/recyclerViewPopular"
+        android:orientation="horizontal">
+
+    </android.support.v7.widget.RecyclerView>
+
+
+
+
+
+
+    </LinearLayout>
+
+    </ScrollView>

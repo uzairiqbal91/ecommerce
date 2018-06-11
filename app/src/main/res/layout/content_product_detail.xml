@@ -1,0 +1,330 @@
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProductDetailActivity"
+
+    >
+
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+
+        android:layout_height="match_parent"
+        tools:context=".ProductActivity">
+
+        <android.support.v4.view.ViewPager
+            android:layout_width="match_parent"
+
+            android:layout_height="200dp"
+
+            android:id="@+id/productViewPager"
+
+            ></android.support.v4.view.ViewPager>
+
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/title"
+
+            android:layout_below="@id/productViewPager"
+            android:textStyle="normal"
+            android:textSize="24sp"
+            android:textColor="#B22222"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="30dp"
+            android:text="Men Jacket"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:id="@+id/price"
+            android:layout_alignBottom="@id/title"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:textStyle="normal"
+            android:textSize="20sp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="30dp"
+            android:textColor="#B22222"
+            android:text="$100"
+            />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_marginTop="2dp"
+            android:layout_height="1dp"
+            android:id="@+id/seperator"
+            android:layout_below="@+id/title"
+            android:background="#c0c0c0"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/seperator"
+            android:orientation="horizontal"
+            android:id="@+id/sizelayout"
+            android:layout_marginTop="10dp"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/size"
+                android:layout_marginLeft="10dp"
+
+                android:textStyle="normal"
+                android:textSize="24sp"
+                android:textColor="#000000"
+                android:layout_marginTop="15dp"
+
+                android:text="Size"
+
+
+                />
+
+            <co.ceryle.segmentedbutton.SegmentedButtonGroup
+                android:layout_marginBottom="10dp"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                app:sbg_animateSelector="accelerate"
+                android:id="@+id/segmentedBtnGrp"
+                app:sbg_animateSelectorDuration="1000"
+                app:sbg_backgroundColor="@color/color_sec"
+                app:sbg_dividerColor="@color/colorPrimary"
+                app:sbg_dividerPadding="10dp"
+
+
+
+                app:sbg_dividerSize="1dp"
+                app:sbg_position="0"
+                app:sbg_radius="2dp"
+                app:sbg_ripple="true"
+                app:sbg_rippleColor="@color/colorPrimary"
+                app:sbg_selectorColor="@color/colorPrimary"
+                app:sbg_selectorTextColor="@color/color_sec"
+                app:sbg_shadow="true"
+                app:sbg_shadowElevation="3dp"
+                app:sbg_shadowMargin="4dp"
+
+                >
+
+
+
+                <Button
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+android:textColor="@color/colorPrimary"
+                    android:minHeight="10dp"
+                    android:id="@+id/sizebtn1"
+                    android:text="M"
+
+                    />
+                <Button
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorPrimary"
+                    android:minHeight="10dp"
+
+                    android:layout_marginLeft="4dp"
+                    android:id="@+id/sizebtn2"
+
+                    android:text="L"
+                    />
+                <Button
+                    android:layout_width="40dp"
+                    android:minHeight="10dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorPrimary"
+
+                    android:layout_marginLeft="4dp"
+
+                    android:id="@+id/sizebtn3"
+
+                    android:text="XL"
+                    />
+                <Button
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorPrimary"
+                    android:minHeight="10dp"
+                    android:layout_marginLeft="4dp"
+                    android:id="@+id/sizebtn4"
+
+                    android:text="2-XL"
+                    />
+                <Button
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorPrimary"
+                    android:layout_marginLeft="4dp"
+                    android:id="@+id/sizebtn5"
+                    android:minHeight="10dp"
+
+                    android:text="3-XL"
+                    />
+                <Button
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorPrimary"
+                    android:layout_marginLeft="4dp"
+                    android:id="@+id/sizebtn6"
+                    android:minHeight="10dp"
+
+                    android:text="XS"
+                    />
+
+            </co.ceryle.segmentedbutton.SegmentedButtonGroup>
+
+        </LinearLayout>
+        <View
+            android:layout_width="fill_parent"
+            android:layout_marginTop="4dp"
+            android:layout_height="1dp"
+            android:id="@+id/seperator1"
+            android:layout_below="@+id/sizelayout"
+            android:background="#c0c0c0"/>
+
+
+        <LinearLayout
+            android:id="@+id/prodDetailLayout"
+            android:layout_below="@id/seperator1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="5dp"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/productdetal"
+
+                android:textStyle="normal"
+                android:textSize="24sp"
+                android:textColor="#000000"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="10dp"
+
+                android:text="Product Detail"
+
+
+                />
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+
+                    android:id="@+id/proddteailtextvie"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textStyle="normal"
+                    android:textSize="14sp"
+                    android:textColor="#000000"
+                    android:text=
+                        "Material: Genuine Leather
+Internal: Viscose Lining
+Color: Black
+Collar: Shirt White Faux Fur Collar
+Sleeve: Full Sleeves
+Closure: Branded Zipper With Button
+Pockets: Front Pocket"
+                    />
+            </ScrollView>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+
+
+                android:background="#000000"
+                android:layout_marginTop="5dp"
+                android:textColor="@color/color_sec"
+                android:text="ADD TO CART"
+                android:textAllCaps="false"
+
+                android:id="@+id/addtocart"
+
+
+
+                ></Button>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/productdescription"
+                android:layout_marginLeft="10dp"
+                android:textStyle="normal"
+                android:textSize="24sp"
+                android:textColor="#000000"
+                android:layout_marginTop="5dp"
+
+                android:text="Product Description"
+
+
+                />
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="100dp">
+                <TextView
+                    android:id="@+id/proddescriptiontextvie"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textStyle="normal"
+                    android:textSize="14sp"
+                    android:textColor="#000000"
+                    android:text="Everybody can have a deep lying wish to look like a superstar or a celebrity. Being as fierce as a superhero is sometimes regarded as a luxury that not many people can afford. If you though intend to do that then know that there a chance for you if you spend your money on the attire known as the New Wolverine X men 2 United and stylish leather jacket. The jacket is seen worn by the character of Wolverine in the new X men movie that is set to be released in 2015. The jacket has received so much accolades from the fashion critics and designers that its meager price has caused it to become a hit in the past couple of years. It has a T back, and at the front, it consists of a full zip closure. Moreover, it has full cuffs and the availability of double stitching for durability and permanence purpose makes it more tempting. High quality leather is used for outside the jacket whereas, internally, polyester lining can be seen. The jacket is a very smart investment as it can keep you warm in the coldest of weathers along with keeping your style component up always."
+
+                    />
+            </ScrollView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/suggestions"
+
+                android:textStyle="normal"
+                android:textSize="24sp"
+                android:textColor="#000000"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="10dp"
+
+                android:text="Suggestions"
+
+
+                />
+
+            <android.support.v7.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginTop="5dp"
+
+                android:id="@+id/recyclerView"
+                android:orientation="horizontal">
+
+            </android.support.v7.widget.RecyclerView>
+
+
+
+
+
+
+
+
+
+
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+</ScrollView>

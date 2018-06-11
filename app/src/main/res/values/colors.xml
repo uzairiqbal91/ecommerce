@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#000</color>
+    <color name="colorPrimaryDark">#000</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="my_fragment_color">#ffa500</color>
+    <color name="color_sec">#ffff</color>
+    <color name="transparent">#00000000</color>
+    <color name="textColor">#6e6e6e</color>
+
+    <color name="editTextBG">#DADADA</color>
+
+</resources>

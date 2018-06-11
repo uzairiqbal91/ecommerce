@@ -1,0 +1,13 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item android:drawable="@drawable/pressed_btn" android:state_pressed="true" android:state_enabled="true"/>
+    <!-- focused state -->
+
+    <item android:drawable="@drawable/focused_btn" android:state_focused="true"/>
+
+    <!-- default state -->
+    <item android:drawable="@drawable/roundedcorn"/>
+
+
+</selector>
