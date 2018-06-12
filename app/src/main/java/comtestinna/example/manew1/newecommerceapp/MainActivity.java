@@ -1,5 +1,6 @@
 package comtestinna.example.manew1.newecommerceapp;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -23,11 +24,13 @@ import android.view.MenuItem;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ExpandableListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import de.clemenskeppler.materialsearchview.MaterialSearchView;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 
 public class MainActivity extends AppCompatActivity
@@ -40,6 +43,8 @@ public class MainActivity extends AppCompatActivity
     RecyclerView results;
     SearchView searchView;
     ExpandableListView ev_list;
+    public static Context activityContext;
+
 
     // Saved instance state key.
     static final String STATE_FRAGMENT = "state_of_fragment";
@@ -49,6 +54,8 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        activityContext=getApplicationContext();
 
 //        getSupportActionBar().setIcon(R.mipmap.ic_launcher);
 
@@ -62,7 +69,7 @@ public class MainActivity extends AppCompatActivity
 //            }
 //        });
 ////
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        final DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
             this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
@@ -71,8 +78,29 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+      // accesign navigation view header
+        View header = navigationView.getHeaderView(0);
+
+//        Button editbtn=header.findViewById(R.id.edit_profile_button);
+//        editbtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Toast.makeText(getApplicationContext(),"clicked edit",Toast.LENGTH_LONG).show();
+//                displayProfileFragment();
+//            }
+//        });
 
 
+        CircleImageView circleImageView=header.findViewById(R.id.imageView);
+        circleImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                displayProfileFragment();
+                drawer.closeDrawer(GravityCompat.START);
+
+            }
+        });
 
         // working navigation view with  extendible list view
 
@@ -200,6 +228,23 @@ public class MainActivity extends AppCompatActivity
         // Add the SimpleFragment.
         fragmentTransaction.add(R.id.fragment_container,
                 simpleFragment).addToBackStack(null).commit();
+
+        // Update the Button text.
+
+    }
+
+    public void displayProfileFragment() {
+        // Instantiate the fragment.
+        ProfileFragment simpleFragment = new ProfileFragment();
+        // Get the FragmentManager and start a transaction.
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager
+                .beginTransaction();
+        fragmentTransaction.replace(R.id.fragment_container, simpleFragment);
+        fragmentTransaction.addToBackStack(null).commit();
+
+        // Add the SimpleFragment.
+
 
         // Update the Button text.
 

@@ -1,5 +1,6 @@
 package comtestinna.example.manew1.newecommerceapp;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -36,7 +37,7 @@ public class FragmentTwo extends Fragment {
     Map<String, Integer[]> map;
     PagerAdapter pagerAdapter;
 
-
+    public Activity mActivity;
     public FragmentTwo() {
         // Required empty public constructor
     }
@@ -167,7 +168,16 @@ public class FragmentTwo extends Fragment {
 
         return rootView;
     }
-
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        mActivity = getActivity();
+    }
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mActivity = null;
+    }
 
     public class MyTimerTask extends TimerTask {
         @Override

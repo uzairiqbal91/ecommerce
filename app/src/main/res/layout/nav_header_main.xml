@@ -13,39 +13,94 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
+
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:contentDescription="@string/nav_header_desc"
-        android:paddingTop="@dimen/nav_header_vertical_spacing"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_alignParentTop="true"
 
-        android:src="@mipmap/ic_launcher"
-       />
+
+
+        android:layout_centerHorizontal="true"
+
+        android:contentDescription="@string/nav_header_desc"
+        android:src="@mipmap/ic_launcher" />
+
 
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_toRightOf="@+id/imageView"
+        android:id="@+id/linear_lp_1"
+
+
+        android:layout_below="@+id/imageView"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="10dp"
+
+        android:orientation="horizontal"
+        android:layout_centerInParent="true"
         >
 
+
+
+
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingTop="@dimen/nav_header_vertical_spacing"
+
+android:layout_gravity="center"
+
             android:text="Muhammad Uzair"
-            android:textSize="20dp"
+android:textSize="20dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:layout_margin="15dp"
+
+
+
+
 
             />
 
 
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
 
+
+
+android:layout_centerHorizontal="true"
+        android:layout_below="@+id/linear_lp_1"
+
+        android:layout_marginTop="-20dp"
+        android:orientation="horizontal">
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/placeholder"
+
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:text="Karachi,Pakistan"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+
+            android:textSize="14dp"
+
+
+            />
+
+
+    </LinearLayout>
 
 
 </RelativeLayout>

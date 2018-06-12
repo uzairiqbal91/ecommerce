@@ -17,9 +17,7 @@ import android.widget.Toast;
 
 import java.util.List;
 
-/**
- * Created by delaroy on 2/13/17.
- */
+
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     private Context mContext ;

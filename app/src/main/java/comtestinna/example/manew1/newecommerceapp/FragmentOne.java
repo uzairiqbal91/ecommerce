@@ -1,5 +1,6 @@
 package comtestinna.example.manew1.newecommerceapp;
 
+import android.app.Activity;
 import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
@@ -46,6 +47,7 @@ public class FragmentOne extends Fragment {
     LinearLayout sliderDotspanel;
     ViewPager viewPager1;
     ImageButton menImageBtn;
+    public Activity mActivity;
 
 
 
@@ -142,6 +144,8 @@ swapFragment();
         });
 
 
+
+
         getData(rootView);
         getData1(rootView);
 
@@ -166,7 +170,7 @@ swapFragment();
         FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
        fragmentTransaction.setCustomAnimations(R.anim.aniamtion, R.anim.animation1);
         fragmentTransaction.replace(R.id.fragment_container, newGamefragment);
-//        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
 
     }
@@ -284,12 +288,21 @@ swapFragment();
 //        SuggestionSliderAdapter adapter = new SuggestionSliderAdapter(getActivity(), mNames,mPrice, mImageUrls);
 //        recyclerView.setAdapter(adapter);
     }
-
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        mActivity = getActivity();
+    }
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mActivity = null;
+    }
     public class MyTimerTask extends TimerTask {
         @Override
         public void run() {
 
-            getActivity().runOnUiThread(new Runnable() {
+            mActivity.runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
 

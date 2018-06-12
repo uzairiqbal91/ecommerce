@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context=".ProfileFragment">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/htab_appbar_profile"
+        android:layout_height="200dp"
+
+
+
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        android:layout_width="match_parent">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imageView"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+
+
+
+            android:paddingTop="5dp"
+            android:layout_gravity="center"
+            android:src="@mipmap/ic_launcher"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Uzair Iqbal"
+            android:gravity="center"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            android:padding="10dp"
+
+
+            />
+
+    </android.support.design.widget.AppBarLayout>
+
+
+
+
+    <android.support.design.widget.TabLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        app:tabGravity="fill"
+        app:tabMode="fixed"
+        android:id="@+id/table_layout_profile"
+
+
+        android:background="@color/colorPrimary"
+
+        android:minHeight="?attr/actionBarSize"
+        app:tabIndicatorColor="@color/color_sec"
+        app:tabSelectedTextColor="@color/color_sec"
+        app:tabTextColor="@color/color_sec"
+
+
+        >
+
+
+
+    </android.support.design.widget.TabLayout>
+    
+    <android.support.v4.view.ViewPager
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/profile_viewpagere"
+
+        ></android.support.v4.view.ViewPager>
+
+
+
+</LinearLayout>
