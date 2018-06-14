@@ -1,7 +1,9 @@
 package comtestinna.example.manew1.newecommerceapp;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -23,6 +25,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ExpandableListView;
 import android.widget.Toast;
 
@@ -43,8 +46,10 @@ public class MainActivity extends AppCompatActivity
     RecyclerView results;
     SearchView searchView;
     ExpandableListView ev_list;
+    public static UserDetail userDetail;
     public static Context activityContext;
-
+    public static boolean userCheck=false;
+    public static User_SharedPreference dataProccessor;
 
     // Saved instance state key.
     static final String STATE_FRAGMENT = "state_of_fragment";
@@ -91,13 +96,99 @@ public class MainActivity extends AppCompatActivity
 //        });
 
 
+        //sharedpreference
+         dataProccessor = new User_SharedPreference(this);
+
+
+
         CircleImageView circleImageView=header.findViewById(R.id.imageView);
-        circleImageView.setOnClickListener(new View.OnClickListener() {
+
+//       circleImageView.setImageResource(userDetail.getProifilePic());
+
+
+
+
+       circleImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                displayProfileFragment();
-                drawer.closeDrawer(GravityCompat.START);
+
+                if (userCheck==true)
+                {
+
+                    displayProfileFragment();
+                    drawer.closeDrawer(GravityCompat.START);
+
+
+
+                }
+
+
+                else
+                {
+                    AlertDialog.Builder mBuilder = new AlertDialog.Builder(MainActivity.this);
+                    View mView = getLayoutInflater().inflate(R.layout.form, null);
+                    final EditText mName = (EditText) mView.findViewById(R.id.userNameText);
+                    final EditText mEmail = (EditText) mView.findViewById(R.id.emailIdText);
+                    final EditText mphone = (EditText) mView.findViewById(R.id.phoneNoText);
+                    final EditText mAddress = (EditText) mView.findViewById(R.id.adressText);
+
+
+
+                    Button mSend = (Button) mView.findViewById(R.id.btn_sendBtn);
+
+
+
+                    mBuilder.setView(mView);
+                    final AlertDialog dialog = mBuilder.create();
+                    dialog.getWindow().getAttributes().windowAnimations = R.anim.anim_left;
+                    dialog.show();
+
+
+
+
+                    mSend.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+
+// saving user data to shared preference
+
+
+                            dataProccessor.setStr("User_name",String.valueOf(mName.getText()));
+                            dataProccessor.setStr("User_phone",String.valueOf(mphone.getText()));
+                            dataProccessor.setStr("User_address",String.valueOf(mAddress.getText()));
+                            dataProccessor.setStr("User_email",String.valueOf(mEmail.getText()));
+
+
+
+
+
+
+                            userDetail=new UserDetail(dataProccessor.getStr("User_name"),dataProccessor.getStr("User_phone"),dataProccessor.getStr("User_address"),dataProccessor.getStr("User_email"));
+
+                            //Toast.makeText(getApplicationContext(),prfs.getString("User_name",""),Toast.LENGTH_LONG).show();
+
+                            userDetail.setCheckProfileCreate(true);
+                            userCheck=true;
+
+                            dialog.dismiss();
+
+
+
+                            displayProfileFragment();
+
+
+                            drawer.closeDrawer(GravityCompat.START);
+
+
+
+                        }
+                    });
+
+                }
+
+
+
 
             }
         });
@@ -326,6 +417,8 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onResume() {
         super.onResume();
+
+
 
         invalidateOptionsMenu();
 

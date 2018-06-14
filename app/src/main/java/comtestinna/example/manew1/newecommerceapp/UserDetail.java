@@ -2,25 +2,43 @@ package comtestinna.example.manew1.newecommerceapp;
 
 public class UserDetail {
 
-    private String name;
-    private String phoneNum ;
-    private String City ;
+    private String name="None";
+    private String phoneNum="None" ;
+    private String City="None" ;
 
 
 
-    private String Country ;
+    private String Country="None" ;
     private int proifilePic;
-    private String accountNum;
-    private String streetAddress;
+    private String accountNum="None";
+    private String streetAddress="None";
+    private boolean checkProfileCreate=false;
+    private String eemail="None";
 
-    public UserDetail(String name, String phoneNum, String city, String country, int proifilePic, String accountNum, String streetAddress) {
+    public UserDetail(String name, String phoneNum, String city, String country, int proifilePic, String accountNum, String streetAddress,String email) {
         this.name = name;
         this.phoneNum = phoneNum;
-        City = city;
+        this.City = city;
         Country = country;
         this.proifilePic = proifilePic;
         this.accountNum = accountNum;
         this.streetAddress = streetAddress;
+        this.eemail=email;
+    }
+
+    public UserDetail()
+    {
+
+    }
+
+    public UserDetail(String name, String phoneNum , String streetAddress,String email) {
+        this.name = name;
+        this.phoneNum = phoneNum;
+
+
+
+        this.streetAddress = streetAddress;
+        this.eemail=email;
     }
 
     public void setName(String name) {
@@ -47,8 +65,20 @@ public class UserDetail {
         this.accountNum = accountNum;
     }
 
+    public String getEemail() {
+        return eemail;
+    }
+
+    public void setEemail(String eemail) {
+        this.eemail = eemail;
+    }
+
     public void setStreetAddress(String streetAddress) {
         this.streetAddress = streetAddress;
+    }
+
+    public void setCheckProfileCreate(boolean checkProfileCreate) {
+        this.checkProfileCreate = checkProfileCreate;
     }
 
     public String getName() {
@@ -78,4 +108,10 @@ public class UserDetail {
     public String getStreetAddress() {
         return streetAddress;
     }
+
+    public boolean getCheckProfileCreate(){return checkProfileCreate;}
+
+
+
+
 }

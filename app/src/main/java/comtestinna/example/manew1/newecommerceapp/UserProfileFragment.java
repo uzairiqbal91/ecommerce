@@ -23,8 +23,8 @@ public class UserProfileFragment extends Fragment {
     private ArrayList<Integer> imgSrc;
     public static ProfileDescriptionAdapter myAdapter;
     public static RecyclerView myrv;
-    public UserDetail userDetail;
-    public CircleImageView circleImageView;
+   // public UserDetail userDetail;
+
     public UserProfileFragment() {
         // Required empty public constructor
     }
@@ -38,13 +38,12 @@ public class UserProfileFragment extends Fragment {
 
         View rootView = inflater.inflate(R.layout.fragment_user_profile, container, false);
 
-circleImageView=rootView.findViewById(R.id.imageView);
-
 
         imgSrc=new ArrayList<>();
         detailTag=new ArrayList<>();
 
         imgSrc.add(R.drawable.user2);
+        imgSrc.add(R.drawable.envelope);
         imgSrc.add(R.drawable.phonecall);
         imgSrc.add(R.drawable.resort);
         imgSrc.add(R.drawable.flag);
@@ -53,20 +52,25 @@ circleImageView=rootView.findViewById(R.id.imageView);
 
 
 
-        userDetail=new UserDetail("Muhammad Uzair","+92-344-1807512","Karachi","Pakinstan" ,R.drawable.phonecall,"42201-9860616-9","block 13-b gulshane - e - iqbal karachi");
 
-        detailTag.add(userDetail.getName());
-        detailTag.add(userDetail.getPhoneNum());
-        detailTag.add(userDetail.getCity());
-        detailTag.add(userDetail.getCountry());
-        detailTag.add(userDetail.getStreetAddress());
-        detailTag.add(userDetail.getAccountNum());
 
-        circleImageView.setImageResource(R.drawable.phonecall);
+
+        detailTag.add(MainActivity.userDetail.getName());
+        detailTag.add(MainActivity.userDetail.getEemail());
+        detailTag.add(MainActivity.userDetail.getPhoneNum());
+        detailTag.add(MainActivity.userDetail.getCity());
+        detailTag.add(MainActivity.userDetail.getCountry());
+        detailTag.add(MainActivity.userDetail.getStreetAddress());
+        detailTag.add(MainActivity.userDetail.getAccountNum());
+
+
+
 
 
 
         myAdapter=new ProfileDescriptionAdapter(getActivity(),detailTag,imgSrc);
+
+
 
 
         RecyclerView myrv = (RecyclerView) rootView.findViewById(R.id.rv_recycler_view_profile);
