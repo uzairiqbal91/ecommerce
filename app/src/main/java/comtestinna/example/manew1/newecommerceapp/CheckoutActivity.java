@@ -40,7 +40,11 @@ public class CheckoutActivity extends AppCompatActivity {
     public static TextView subTotal;
 
    public static double mSubTotal = 0;
+    CheckRecyclerViewAdapter mAdapter;
+
     Button removeBtn;
+    public static List<OrderDetail> order=new ArrayList<>();
+    boolean flag=false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +70,9 @@ public class CheckoutActivity extends AppCompatActivity {
 
 
 
+
+
+
         // get content of cart
 //        MySharedPreference mShared = new MySharedPreference(CheckoutActivity.this);
 //
@@ -83,7 +90,7 @@ public class CheckoutActivity extends AppCompatActivity {
         String productListAsString = getIntent().getStringExtra("productList");
         Type type = new TypeToken<List<Book>>(){}.getType();
         Gson gson = new Gson();
-        List<Book> addCartProducts = gson.fromJson(productListAsString,type);
+        final List<Book> addCartProducts = gson.fromJson(productListAsString,type);
 checkout=findViewById(R.id.checkout);
 
 checkout.setOnClickListener(new View.OnClickListener() {
@@ -95,6 +102,8 @@ checkout.setOnClickListener(new View.OnClickListener() {
         final EditText mEmail = (EditText) mView.findViewById(R.id.emailIdText);
         final EditText mphone = (EditText) mView.findViewById(R.id.phoneNoText);
         final EditText mAddress = (EditText) mView.findViewById(R.id.adressText);
+
+
 
         Button mSend = (Button) mView.findViewById(R.id.btn_sendBtn);
 
@@ -130,8 +139,48 @@ dialog.dismiss();
                 dialog1.show();
 
 
+
+
+                if(mAdapter.getItemCount()>0)
+                {
+
+                    order.add(new OrderDetail("userorder101","10-10-2010", String.valueOf(mSubTotal) ,"1000"));
+
+                }
+
+                mAdapter.clear();
+//                flag=true;
+                mSubTotal=0;
+                subTotal.setText("Total: " + String.valueOf(mSubTotal) + " $");
+
+
+
+
+               // Toast.makeText(getApplicationContext(),String.valueOf(mAdapter.getItemCount()),Toast.LENGTH_LONG).show();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+
+
+
+
+
             }
         });
+
     }
 });
 
@@ -149,13 +198,19 @@ dialog.dismiss();
 
 
 //
-        CheckRecyclerViewAdapter mAdapter = new CheckRecyclerViewAdapter(CheckoutActivity.this, ProductDetailActivity.addCartProducts);
+
+        if(flag==false)
+        {
+         mAdapter = new CheckRecyclerViewAdapter(CheckoutActivity.this, ProductDetailActivity.addCartProducts);
         checkRecyclerView.setAdapter(mAdapter);
-//
+
+        }
 
 
-         mSubTotal = getTotalPrice(ProductDetailActivity.addCartProducts);
-         subTotal.setText("Total: " + String.valueOf(mSubTotal) + " $");
+        mSubTotal = getTotalPrice(ProductDetailActivity.addCartProducts);
+        subTotal.setText("Total: " + String.valueOf(mSubTotal) + " $");
+
+
 
          continueShopping=findViewById(R.id.shopping);
 
@@ -165,6 +220,7 @@ dialog.dismiss();
 
 
 finish();
+
              }
          });
 //

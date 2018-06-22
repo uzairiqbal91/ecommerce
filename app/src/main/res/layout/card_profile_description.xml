@@ -36,7 +36,7 @@
 
             />
 
-        <TextView
+        <EditText
             android:id="@+id/description_tag_name"
             android:textColor="#2d2d2d"
             android:textSize="20dp"
@@ -46,6 +46,7 @@
             android:layout_gravity="center"
             android:layout_marginLeft="30dp"
             android:layout_height="wrap_content"
+            android:editable="false"
 
             android:text="Book Title"/>
 

@@ -20,6 +20,10 @@ public class CheckRecyclerViewAdapter extends RecyclerView.Adapter<CheckRecycler
 
     private List<Book> mProductObject;
 
+    public CheckRecyclerViewAdapter()
+    {
+
+    }
 
     public CheckRecyclerViewAdapter(Context context, List<Book> mProductObject) {
         this.context = context;
@@ -58,7 +62,8 @@ public class CheckRecyclerViewAdapter extends RecyclerView.Adapter<CheckRecycler
 
                 ProductDetailActivity.addCartProducts.remove(position);
                 mSubTotal=CheckoutActivity.getTotalPrice(ProductDetailActivity.addCartProducts);
-                notifyDataSetChanged();
+
+                updateview();
 
 
 
@@ -69,10 +74,32 @@ public class CheckRecyclerViewAdapter extends RecyclerView.Adapter<CheckRecycler
             }
         });
 
+
+
     }
+
+
 
     @Override
     public int getItemCount() {
         return mProductObject.size();
+    }
+
+
+
+    public void updateview()
+    {
+
+        notifyDataSetChanged();
+
+    }
+
+
+    public void clear() {
+        final int size = ProductDetailActivity.addCartProducts.size();
+        ProductDetailActivity.addCartProducts.clear();
+        notifyItemRangeRemoved(0, size);
+        updateview();
+
     }
 }

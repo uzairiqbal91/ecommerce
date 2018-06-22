@@ -7,10 +7,14 @@ import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
+import android.support.design.widget.BottomNavigationView;
+import android.support.design.widget.BottomSheetBehavior;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -21,6 +25,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -83,6 +88,10 @@ public class ProductDetailActivity extends AppCompatActivity {
 
     TextView price;
     Integer productImage;
+
+
+    NestedScrollView bottomLinearLayout;
+    BottomSheetBehavior<NestedScrollView> bottomNavigationView;
 
 
 
@@ -239,109 +248,109 @@ public class ProductDetailActivity extends AppCompatActivity {
         buttonaddtocart=findViewById(R.id.addtocart);
 
 
-        final SegmentedButtonGroup segmentedButtonGroup=findViewById(R.id.segmentedBtnGrp);
-
-segmentedButtonGroup.setOnClickedButtonPosition(new SegmentedButtonGroup.OnClickedButtonPosition() {
-    @Override
-    public void onClickedButtonPosition(int position) {
-
-        switch (position){
-            case 0 :
-
-            size="M";
-            break;
-
-
-            case 1 :
-
-                size="L";
-                break;
-
-            case 2 :
-
-                size="XL";
-                break;
-
-            case 3 :
-
-                size="2-XL";
-                break;
-            case 4 :
-
-                size="3-XL";
-                break;
-            case 5 :
-
-                size="XS";
-                break;
-
-                default:
-                    size="M";
-                    break;
-
-
-
-
-
-        }
-
-
-    }
-});
-
-
-
-
-
-        buttonaddtocart.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-
-                Toast.makeText(getApplicationContext(),size,Toast.LENGTH_LONG).show();
-
-                addCartProducts.add(new Book(String.valueOf(title.getText()),String.valueOf(price.getText()),"Description book",productImage,size));
-                cart_count=addCartProducts.size();
-
-                invalidateOptionsMenu();
-
-
-
-
-
-
-
-
-
-
-
-
-
-//                String productsFromCart = sharedPreference.retrieveProductFromCart();
-//                if(productsFromCart.equals("")){
-//                    List<Book> cartProductList = new ArrayList<Book>();
-//                    cartProductList.add(singleProduct);
-//                    String cartValue = gson.toJson(cartProductList);
-//                    sharedPreference.addProductToTheCart(cartValue);
-//                    cartProductNumber = cartProductList.size();
-//                }
-//                else{
-//                    String productsInCart = sharedPreference.retrieveProductFromCart();
-//                    Book[] storedProducts = gson.fromJson(productsInCart, Book[].class);
+//        final SegmentedButtonGroup segmentedButtonGroup=findViewById(R.id.segmentedBtnGrp);
 //
-//                    List<Book> allNewProduct = convertObjectArrayToListObject(storedProducts);
-//                    allNewProduct.add(singleProduct);
-//                    String addAndStoreNewProduct = gson.toJson(allNewProduct);
-//                    sharedPreference.addProductToTheCart(addAndStoreNewProduct);
-//                    cartProductNumber = allNewProduct.size();
-//                }
-//                sharedPreference.addProductCount(cartProductNumber);
+//segmentedButtonGroup.setOnClickedButtonPosition(new SegmentedButtonGroup.OnClickedButtonPosition() {
+//    @Override
+//    public void onClickedButtonPosition(int position) {
+//
+//        switch (position){
+//            case 0 :
+//
+//            size="M";
+//            break;
+//
+//
+//            case 1 :
+//
+//                size="L";
+//                break;
+//
+//            case 2 :
+//
+//                size="XL";
+//                break;
+//
+//            case 3 :
+//
+//                size="2-XL";
+//                break;
+//            case 4 :
+//
+//                size="3-XL";
+//                break;
+//            case 5 :
+//
+//                size="XS";
+//                break;
+//
+//                default:
+//                    size="M";
+//                    break;
+//
+//
+//
+//
+//
+//        }
+//
+//
+//    }
+//});
+//
+//
+
+
+
+//        buttonaddtocart.setOnClickListener(new View.OnClickListener() {
+//
+//            @Override
+//            public void onClick(View v) {
+//
+//                Toast.makeText(getApplicationContext(),size,Toast.LENGTH_LONG).show();
+//
+//                addCartProducts.add(new Book(String.valueOf(title.getText()),String.valueOf(price.getText()),"Description book",productImage,size));
+//                cart_count=addCartProducts.size();
+//
 //                invalidateOptionsMenu();
-
-
-
-            }
-        });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+////                String productsFromCart = sharedPreference.retrieveProductFromCart();
+////                if(productsFromCart.equals("")){
+////                    List<Book> cartProductList = new ArrayList<Book>();
+////                    cartProductList.add(singleProduct);
+////                    String cartValue = gson.toJson(cartProductList);
+////                    sharedPreference.addProductToTheCart(cartValue);
+////                    cartProductNumber = cartProductList.size();
+////                }
+////                else{
+////                    String productsInCart = sharedPreference.retrieveProductFromCart();
+////                    Book[] storedProducts = gson.fromJson(productsInCart, Book[].class);
+////
+////                    List<Book> allNewProduct = convertObjectArrayToListObject(storedProducts);
+////                    allNewProduct.add(singleProduct);
+////                    String addAndStoreNewProduct = gson.toJson(allNewProduct);
+////                    sharedPreference.addProductToTheCart(addAndStoreNewProduct);
+////                    cartProductNumber = allNewProduct.size();
+////                }
+////                sharedPreference.addProductCount(cartProductNumber);
+////                invalidateOptionsMenu();
+//
+//
+//
+//            }
+//        });
 
 
 
@@ -358,6 +367,47 @@ segmentedButtonGroup.setOnClickedButtonPosition(new SegmentedButtonGroup.OnClick
         Gson gson = new Gson();
 
          jsonProducts = gson.toJson(addCartProducts);
+
+
+
+
+
+
+
+
+
+// this code for bottom navigation view
+//        bottomLinearLayout=(NestedScrollView) findViewById(R.id.bottomsheet);
+//        bottomNavigationView= BottomSheetBehavior.from(bottomLinearLayout);
+//
+//       bottomNavigationView.setPeekHeight(200);
+//        bottomNavigationView.setState(BottomSheetBehavior.STATE_COLLAPSED);
+
+
+
+
+//        bottomNavigationView.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
+//            @Override
+//            public void onStateChanged(@NonNull View bottomSheet, int newState) {
+//                if (newState == BottomSheetBehavior.STATE_COLLAPSED) {
+//                    bottomLinearLayout.setVisibility(View.VISIBLE);
+//                }
+//
+//                if (newState == BottomSheetBehavior.STATE_EXPANDED) {
+//                    bottomLinearLayout.setVisibility(View.GONE);
+//                }
+//
+//                if (newState == BottomSheetBehavior.STATE_DRAGGING) {
+//                    bottomLinearLayout.setVisibility(View.GONE);
+//                }
+//            }
+//
+//            @Override
+//            public void onSlide(@NonNull View bottomSheet, float slideOffset) {
+//
+//            }
+//        });
+
 
 
 
@@ -414,12 +464,12 @@ segmentedButtonGroup.setOnClickedButtonPosition(new SegmentedButtonGroup.OnClick
     }
     private void initRecyclerView(){
 
-
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-        recyclerView.setLayoutManager(layoutManager);
-        SuggestionSliderAdapter adapter = new SuggestionSliderAdapter(this, mNames,mPrice, mImageUrls);
-        recyclerView.setAdapter(adapter);
+//
+//        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+//        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+//        recyclerView.setLayoutManager(layoutManager);
+//        SuggestionSliderAdapter adapter = new SuggestionSliderAdapter(this, mNames,mPrice, mImageUrls);
+//        recyclerView.setAdapter(adapter);
 
     }
     @Override

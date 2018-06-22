@@ -7,6 +7,7 @@
     <color name="color_sec">#ffff</color>
     <color name="transparent">#00000000</color>
     <color name="textColor">#6e6e6e</color>
+    <color name="coloractivity">#D3D3D3</color>
 
     <color name="editTextBG">#DADADA</color>
 

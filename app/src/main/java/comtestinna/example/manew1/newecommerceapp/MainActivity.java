@@ -30,7 +30,9 @@ import android.widget.ExpandableListView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import de.clemenskeppler.materialsearchview.MaterialSearchView;
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -50,9 +52,18 @@ public class MainActivity extends AppCompatActivity
     public static Context activityContext;
     public static boolean userCheck=false;
     public static User_SharedPreference dataProccessor;
+   // public static List<OrderDetail> order;
+
+
+
+    List <String> user_data;
+    ProfileFragment simpleFragment = new ProfileFragment();
 
     // Saved instance state key.
     static final String STATE_FRAGMENT = "state_of_fragment";
+    String value;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -105,19 +116,31 @@ public class MainActivity extends AppCompatActivity
 
 //       circleImageView.setImageResource(userDetail.getProifilePic());
 
+        dataProccessor.setStr("User_count","false");
 
-
+         value=dataProccessor.getStr("User_count");
 
        circleImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
+                View mView = getLayoutInflater().inflate(R.layout.form, null);
+                final EditText mName = (EditText) mView.findViewById(R.id.userNameText);
+                final EditText mEmail = (EditText) mView.findViewById(R.id.emailIdText);
+                final EditText mphone = (EditText) mView.findViewById(R.id.phoneNoText);
+                final EditText mAddress = (EditText) mView.findViewById(R.id.adressText);
 
-                if (userCheck==true)
+
+
+
+
+
+                if (value.equalsIgnoreCase("true"))
                 {
 
                     displayProfileFragment();
                     drawer.closeDrawer(GravityCompat.START);
+
 
 
 
@@ -127,11 +150,6 @@ public class MainActivity extends AppCompatActivity
                 else
                 {
                     AlertDialog.Builder mBuilder = new AlertDialog.Builder(MainActivity.this);
-                    View mView = getLayoutInflater().inflate(R.layout.form, null);
-                    final EditText mName = (EditText) mView.findViewById(R.id.userNameText);
-                    final EditText mEmail = (EditText) mView.findViewById(R.id.emailIdText);
-                    final EditText mphone = (EditText) mView.findViewById(R.id.phoneNoText);
-                    final EditText mAddress = (EditText) mView.findViewById(R.id.adressText);
 
 
 
@@ -147,6 +165,9 @@ public class MainActivity extends AppCompatActivity
 
 
 
+
+
+
                     mSend.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -154,13 +175,32 @@ public class MainActivity extends AppCompatActivity
 // saving user data to shared preference
 
 
+
+
+
                             dataProccessor.setStr("User_name",String.valueOf(mName.getText()));
                             dataProccessor.setStr("User_phone",String.valueOf(mphone.getText()));
                             dataProccessor.setStr("User_address",String.valueOf(mAddress.getText()));
                             dataProccessor.setStr("User_email",String.valueOf(mEmail.getText()));
 
+                            dataProccessor.setStr("User_count","true");
 
 
+
+                            value=dataProccessor.getStr("User_count");
+//
+//                            user_data.add(String.valueOf(mName.getText()));
+//                            user_data.add(String.valueOf(mphone.getText()));
+//                            user_data.add(String.valueOf(mAddress.getText()));
+//                            user_data.add(String.valueOf(mEmail.getText()));
+
+
+//                            Set<String> set = new HashSet<String>();
+//                            dataProccessor.setArray("user_data",set,user_data);
+//
+//                            Set<String> getset=dataProccessor.getArray("user_data");
+//
+//                            Toast.makeText(getApplicationContext(),String.valueOf(getset),Toast.LENGTH_LONG).show();
 
 
 
@@ -199,6 +239,7 @@ public class MainActivity extends AppCompatActivity
 //        al_main.add(new Model_country("hii"));
         CategoryAdapter obj_adapter;
         obj_adapter = new CategoryAdapter(MainActivity.this, al_main);
+
 
 
         ev_list = (ExpandableListView) findViewById(R.id.left_drawer);
@@ -326,7 +367,7 @@ public class MainActivity extends AppCompatActivity
 
     public void displayProfileFragment() {
         // Instantiate the fragment.
-        ProfileFragment simpleFragment = new ProfileFragment();
+
         // Get the FragmentManager and start a transaction.
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager

@@ -25,9 +25,10 @@
             app:popupTheme="@style/AppTheme.PopupOverlay"
 
             />
-        <include layout="@layout/content_product_detail" />
+        <include layout="@layout/content_product_detail_1" />
     </android.support.design.widget.AppBarLayout>
-
+    <!--<include layout="@layout/item_bottom_sheet"-->
+        <!--/>-->
 
 
 

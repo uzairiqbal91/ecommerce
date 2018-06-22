@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    >
+
+  <ScrollView
+      android:layout_width="match_parent"
+      android:id="@+id/scrollview"
+      android:layout_height="250dp">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+
+    >
+
+
+
+
+    <android.support.v7.widget.CardView xmlns:cardview="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/cardview_id_profile_name"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+
+        android:layout_margin="10dp"
+        android:clickable="true"
+        android:elevation="100dp"
+
+
+        android:foreground="?android:attr/selectableItemBackground"
+
+
+        cardview:cardCornerRadius="10dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:background="@color/colorPrimary"
+            android:textColor="@color/color_sec"
+            android:layout_height="wrap_content"
+            android:textSize="15dp"
+            android:text="User Name"
+            android:gravity="center"
+
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+
+            />
+
+
+
+        <LinearLayout
+            android:layout_marginTop="20dp"
+            android:id="@+id/linearLayout_description_name"
+            android:layout_width="match_parent"
+
+
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/description_tag_img_src_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/user2"
+                android:layout_marginLeft="50dp"
+
+
+
+                />
+
+            <EditText
+                android:id="@+id/description_tag_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="3dp"
+                android:editable="false"
+                android:enabled="false"
+                android:backgroundTint="@color/colorPrimary"
+                android:hint="User Name"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="#2d2d2d"
+
+                android:textSize="20dp" />
+
+
+
+
+
+        </LinearLayout>
+
+
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView xmlns:cardview="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/cardview_id_profile_email"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+
+        android:layout_margin="10dp"
+        android:clickable="true"
+        android:elevation="100dp"
+
+
+        android:foreground="?android:attr/selectableItemBackground"
+
+
+        cardview:cardCornerRadius="10dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:background="@color/colorPrimary"
+            android:textColor="@color/color_sec"
+            android:layout_height="wrap_content"
+            android:textSize="15dp"
+            android:text="User Email"
+            android:gravity="center"
+
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+
+            />
+
+
+
+        <LinearLayout
+            android:layout_marginTop="20dp"
+            android:id="@+id/linearLayout_description_email"
+            android:layout_width="match_parent"
+
+
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/description_tag_img_src_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/envelope"
+                android:layout_marginLeft="50dp"
+
+
+
+                />
+
+            <EditText
+                android:id="@+id/description_tag_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="3dp"
+                android:editable="false"
+                android:hint="User Email"
+                android:enabled="false"
+                android:backgroundTint="@color/colorPrimary"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="#2d2d2d"
+
+                android:textSize="20dp" />
+
+
+
+
+
+        </LinearLayout>
+
+
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView xmlns:cardview="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/cardview_id_profile_phone"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+
+        android:layout_margin="10dp"
+        android:clickable="true"
+        android:elevation="100dp"
+
+
+        android:foreground="?android:attr/selectableItemBackground"
+
+
+        cardview:cardCornerRadius="10dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:background="@color/colorPrimary"
+            android:textColor="@color/color_sec"
+            android:layout_height="wrap_content"
+            android:textSize="15dp"
+            android:text="User Phone"
+            android:gravity="center"
+
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+
+            />
+
+
+
+        <LinearLayout
+            android:layout_marginTop="20dp"
+            android:id="@+id/linearLayout_description_phone"
+            android:layout_width="match_parent"
+
+
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/phonecall"
+                android:layout_marginLeft="50dp"
+
+
+
+                />
+
+            <EditText
+                android:id="@+id/description_tag_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="3dp"
+                android:editable="false"
+                android:hint="User Phone"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="#2d2d2d"
+                android:enabled="false"
+                android:backgroundTint="@color/colorPrimary"
+
+                android:textSize="20dp" />
+
+
+
+
+
+        </LinearLayout>
+
+
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView xmlns:cardview="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/cardview_id_profile_address"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+
+        android:layout_margin="10dp"
+        android:clickable="true"
+        android:elevation="100dp"
+
+
+        android:foreground="?android:attr/selectableItemBackground"
+
+
+        cardview:cardCornerRadius="10dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:background="@color/colorPrimary"
+            android:textColor="@color/color_sec"
+            android:layout_height="wrap_content"
+            android:textSize="15dp"
+            android:text="User Address"
+            android:gravity="center"
+
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+
+            />
+
+
+
+        <LinearLayout
+            android:layout_marginTop="20dp"
+            android:id="@+id/linearLayout_description_address"
+            android:layout_width="match_parent"
+
+
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/placeholder2"
+                android:layout_marginLeft="50dp"
+
+
+
+                />
+
+            <EditText
+                android:id="@+id/description_tag_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="3dp"
+                android:editable="false"
+
+                android:hint="User Address"
+                android:enabled="false"
+                android:backgroundTint="@color/colorPrimary"
+
+
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="#2d2d2d"
+
+                android:textSize="20dp" />
+
+
+
+
+
+        </LinearLayout>
+
+
+    </android.support.v7.widget.CardView>
+
+
+
+</LinearLayout>
+  </ScrollView>
+
+
+    <Button
+
+        android:id="@+id/editBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+
+
+        android:background="@color/colorPrimary"
+        android:text="Edit"
+
+
+
+        android:textColor="@color/color_sec"
+        android:layout_alignParentRight="true" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+
+        android:background="@color/colorPrimary"
+        android:textColor="@color/color_sec"
+        android:id="@+id/saveBtn"
+        android:visibility="gone"
+
+        android:text="Save"
+
+
+        android:layout_alignParentRight="true" />
+
+</RelativeLayout>

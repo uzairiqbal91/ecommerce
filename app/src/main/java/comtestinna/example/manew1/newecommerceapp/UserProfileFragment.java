@@ -7,9 +7,13 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +27,20 @@ public class UserProfileFragment extends Fragment {
     private ArrayList<Integer> imgSrc;
     public static ProfileDescriptionAdapter myAdapter;
     public static RecyclerView myrv;
-   // public UserDetail userDetail;
+
+    public EditText user_name;
+    public EditText user_email;
+    public EditText user_phone;
+    public EditText user_address;
+
+
+    public Button editBtn;
+    public Button saveBtn;
+
+
+
+
+    // public UserDetail userDetail;
 
     public UserProfileFragment() {
         // Required empty public constructor
@@ -36,7 +53,7 @@ public class UserProfileFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        View rootView = inflater.inflate(R.layout.fragment_user_profile, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_user_profile_1, container, false);
 
 
         imgSrc=new ArrayList<>();
@@ -65,18 +82,106 @@ public class UserProfileFragment extends Fragment {
 
 
 
+        user_name=(EditText)rootView.findViewById(R.id.description_tag_name);
+        user_email=(EditText)rootView.findViewById(R.id.description_tag_email);
+        user_phone=(EditText)rootView.findViewById(R.id.description_tag_phone);
+        user_address=(EditText)rootView.findViewById(R.id.description_tag_address);
+
+
+        editBtn=(Button) rootView.findViewById(R.id.editBtn);
+        saveBtn=(Button) rootView.findViewById(R.id.saveBtn);
+
+        user_name.setText(MainActivity.userDetail.getName());
+        user_email.setText(MainActivity.userDetail.getEemail());
+        user_phone.setText(MainActivity.userDetail.getPhoneNum());
+        user_address.setText(MainActivity.userDetail.getStreetAddress());
 
 
 
-        myAdapter=new ProfileDescriptionAdapter(getActivity(),detailTag,imgSrc);
+
+
+
+//        user_name.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//
+//            }
+//
+//
+//
+//        });
+
+
+
+        editBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                UpdateEditText(user_name);
+                UpdateEditText(user_email);
+                UpdateEditText(user_phone);
+                UpdateEditText(user_address);
+
+
+                editBtn.setVisibility(View.GONE);
+                saveBtn.setVisibility(View.VISIBLE);
+
+
+            }
+        });
+
+
+
+        saveBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                MainActivity.userDetail.setName(String.valueOf(user_name.getText()));
+                MainActivity.userDetail.setEemail(String.valueOf(user_email.getText()));
+                MainActivity.userDetail.setPhoneNum(String.valueOf(user_phone.getText()));
+                MainActivity.userDetail.setStreetAddress(String.valueOf(user_address.getText()));
+
+
+                saveBtn.setVisibility(View.GONE);
+                editBtn.setVisibility(View.VISIBLE);
+
+
+                user_name.setEnabled(false);
+                user_email.setEnabled(false);
+                user_phone.setEnabled(false);
+                user_address.setEnabled(false);
+
+                Toast.makeText(getActivity(),MainActivity.userDetail.getName(),Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(),MainActivity.userDetail.getEemail(),Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(),MainActivity.userDetail.getPhoneNum(),Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(),MainActivity.userDetail.getStreetAddress(),Toast.LENGTH_LONG).show();
+
+
+            }
+        });
 
 
 
 
-        RecyclerView myrv = (RecyclerView) rootView.findViewById(R.id.rv_recycler_view_profile);
 
-        myrv.setLayoutManager(new GridLayoutManager(getActivity(),1));
-        myrv.setAdapter(myAdapter);
+
+
+
+
+
+
+
+
+//        myAdapter=new ProfileDescriptionAdapter(getActivity(),detailTag,imgSrc);
+//
+//
+//
+//
+//        RecyclerView myrv = (RecyclerView) rootView.findViewById(R.id.rv_recycler_view_profile);
+//
+//        myrv.setLayoutManager(new GridLayoutManager(getActivity(),1));
+//        myrv.setAdapter(myAdapter);
 
 
 
@@ -87,5 +192,15 @@ public class UserProfileFragment extends Fragment {
         return rootView;
     }
 
+    public void UpdateEditText(EditText edit){
+
+        edit.setEnabled(true);
+        edit.requestFocus();
+        edit.setCursorVisible(true);
+        edit.setInputType(InputType.TYPE_CLASS_TEXT);
+
+
+
+    }
 
 }
