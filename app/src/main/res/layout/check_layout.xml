@@ -54,6 +54,30 @@
         android:orientation="vertical"
         android:layout_weight="2">
 
+
+
+        <TextView
+            android:id="@+id/product_size"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:textColor="@color/colorPrimary"
+            android:layout_gravity="center"
+            android:text="size"
+            />
+
+        <TextView
+            android:id="@+id/product_qty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:textColor="@color/colorPrimary"
+            android:layout_gravity="center"
+            android:text="qty"
+            />
+
         <TextView
             android:id="@+id/product_price"
             android:layout_width="wrap_content"
@@ -65,17 +89,6 @@
             android:layout_gravity="center"
 
 
-            />
-
-        <TextView
-            android:id="@+id/product_size"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            android:textColor="@color/colorPrimary"
-            android:layout_gravity="center"
-            android:text="size"
             />
 
         <Button
@@ -91,6 +104,7 @@
             android:textColor="@color/color_sec"
 
             />
+
     </LinearLayout>
 
 </LinearLayout>

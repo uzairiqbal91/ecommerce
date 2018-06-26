@@ -2,32 +2,33 @@
 
 
 
-<android.support.design.widget.CoordinatorLayout
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/color_sec"
-    android:layout_height="match_parent"
     tools:context=".ProductDetailActivity"
-
-
-
+    android:layout_height="match_parent"
     >
 
+    <android.support.v4.widget.NestedScrollView
 
-
-    <ScrollView
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+
+    android:layout_height="fill_parent"
+android:padding="10dp"
+        android:fillViewport="true"
+
+
 
         >
-    <LinearLayout
-        android:layout_width="match_parent"
 
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        tools:context=".ProductActivity">
+        <LinearLayout
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+
 
 
 
@@ -45,11 +46,12 @@
 
 
         <android.support.v7.widget.CardView
-            android:layout_width="fill_parent"
-            android:layout_height="100dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/cardview1"
 
             android:layout_centerInParent="true"
-
+android:layout_below="@+id/productViewPager"
             android:layout_margin="5dp"
             android:clickable="true"
             android:elevation="100dp"
@@ -66,7 +68,7 @@
             android:layout_marginLeft="10dp"
             android:id="@+id/title"
             android:textColor="@color/color_sec"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:textSize="25dp"
             android:text="Men leather Jacket"
             android:textStyle="bold"
@@ -165,13 +167,13 @@
         <android.support.v7.widget.CardView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-
+            android:id="@+id/cardview2"
             android:layout_centerInParent="true"
 
             android:layout_margin="5dp"
             android:clickable="true"
             android:elevation="150dp"
-
+android:layout_below="@+id/cardview1"
             app:cardBackgroundColor="@color/color_sec"
 
 
@@ -239,15 +241,15 @@ Avengers Infinity War Classic Jacket is made of 100% original faux leather which
             ></android.support.v7.widget.CardView>
 
         <android.support.v7.widget.CardView
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
+            android:id="@+id/cardview3"
             android:layout_centerInParent="true"
 
             android:layout_margin="5dp"
             android:clickable="true"
             android:elevation="150dp"
-
+android:layout_below="@+id/cardview2"
             app:cardBackgroundColor="@color/color_sec"
 
 
@@ -400,6 +402,7 @@ Avengers Infinity War Classic Jacket is made of 100% original faux leather which
 
 
 
+
                     android:textAppearance="@style/TextAppearance.AppCompat.Body1"
 
                     />
@@ -413,12 +416,12 @@ Avengers Infinity War Classic Jacket is made of 100% original faux leather which
                     <ImageButton
 
 
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+android:id="@+id/textview_plus"
+                        android:background="@drawable/plus"
 
-                        android:background="@drawable/circle_2"
 
-                        android:src="@drawable/ic_add_black_24dp"
 
                         android:layout_marginLeft="100dp"
 
@@ -434,15 +437,17 @@ Avengers Infinity War Classic Jacket is made of 100% original faux leather which
                         android:layout_marginLeft="30dp"
                         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                         android:text="1"
+                        android:id="@+id/textview_quanity"
                         />
 
 
                     <ImageButton
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
 
-                        android:background="@drawable/circle_2"
-                        android:src="@drawable/ic_add_black_24dp"
+                        android:background="@drawable/minus"
+                        android:id="@+id/button_minus"
+
 
                         />
 
@@ -468,6 +473,150 @@ Avengers Infinity War Classic Jacket is made of 100% original faux leather which
             ></android.support.v7.widget.CardView>
 
 
+            <Button
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                android:text="Add To Cart"
+                android:id="@+id/addtocart"
+                android:textColor="@color/color_sec"
+                />
+
+        <!--<android.support.v7.widget.CardView-->
+            <!--android:layout_width="fill_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:id="@+id/cardview4"-->
+            <!--android:layout_centerInParent="true"-->
+
+            <!--android:layout_margin="5dp"-->
+            <!--android:clickable="true"-->
+            <!--android:elevation="150dp"-->
+<!--android:layout_below="@+id/cardview3"-->
+            <!--app:cardBackgroundColor="@color/color_sec"-->
+
+
+            <!--android:foreground="?android:attr/selectableItemBackground"-->
+
+            <!--app:cardCornerRadius="5dp">-->
+
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:orientation="vertical"-->
+                <!--&gt;-->
+
+
+                <!--<TextView-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_marginLeft="10dp"-->
+
+
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:textColor="@color/colorPrimary"-->
+                    <!--android:textSize="18dp"-->
+                    <!--android:text="Sizes"-->
+
+
+
+
+
+                    <!--android:textAppearance="@style/TextAppearance.AppCompat.Body1"-->
+
+                    <!--/>-->
+
+
+
+
+                <!--<View-->
+                    <!--android:layout_width="fill_parent"-->
+                    <!--android:layout_marginTop="4dp"-->
+                    <!--android:layout_height="0.5dp"-->
+                    <!--android:id="@+id/seperator10"-->
+                    <!--android:layout_below="@+id/sizelayout"-->
+                    <!--android:background="#c0c0c0"/>-->
+
+
+
+                <!--<TextView-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_marginLeft="10dp"-->
+
+                    <!--android:textColor="@color/colorPrimary"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:textSize="18dp"-->
+                    <!--android:text="Quantity"-->
+
+
+
+
+
+                    <!--android:textAppearance="@style/TextAppearance.AppCompat.Body1"-->
+
+                    <!--/>-->
+
+                <!--<LinearLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:orientation="horizontal"-->
+                    <!--&gt;-->
+
+                    <!--<ImageButton-->
+
+
+                        <!--android:layout_width="60dp"-->
+                        <!--android:layout_height="60dp"-->
+
+                        <!--android:background="@drawable/circle_2"-->
+
+                        <!--android:src="@drawable/ic_add_black_24dp"-->
+
+                        <!--android:layout_marginLeft="100dp"-->
+
+                        <!--/>-->
+
+
+                    <!--<TextView-->
+                        <!--android:layout_width="50dp"-->
+                        <!--android:layout_height="50dp"-->
+
+                        <!--android:textColor="@color/colorPrimary"-->
+                        <!--android:textSize="40dp"-->
+                        <!--android:layout_marginLeft="30dp"-->
+                        <!--android:textAppearance="@style/TextAppearance.AppCompat.Body1"-->
+                        <!--android:text="1"-->
+                        <!--/>-->
+
+
+                    <!--<ImageButton-->
+                        <!--android:layout_width="60dp"-->
+                        <!--android:layout_height="60dp"-->
+
+                        <!--android:background="@drawable/circle_2"-->
+                        <!--android:src="@drawable/ic_add_black_24dp"-->
+
+                        <!--/>-->
+
+
+
+                <!--</LinearLayout>-->
+
+
+
+
+
+            <!--</LinearLayout>-->
+
+
+
+
+
+
+
+
+
+
+            <!--&gt;</android.support.v7.widget.CardView>-->
 
 
 
@@ -480,9 +629,16 @@ Avengers Infinity War Classic Jacket is made of 100% original faux leather which
 
 
 
-    </LinearLayout>
-    </ScrollView>
 
+
+
+        </LinearLayout>
+
+
+
+
+    </android.support.v4.widget.NestedScrollView>
+</FrameLayout>
 
         <!--<TextView-->
             <!--android:layout_width="wrap_content"-->
@@ -858,18 +1014,16 @@ Avengers Infinity War Classic Jacket is made of 100% original faux leather which
     <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
     <!--&lt;!&ndash;android:text="Flat No 404, Skyline Apartments, Vizag - 500576" />&ndash;&gt;-->
 
-    <!--&lt;!&ndash;<Button&ndash;&gt;-->
-    <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
-    <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
-    <!--&lt;!&ndash;android:layout_marginTop="30dp"&ndash;&gt;-->
-    <!--&lt;!&ndash;android:background="#000"&ndash;&gt;-->
-    <!--&lt;!&ndash;android:foreground="?attr/selectableItemBackground"&ndash;&gt;-->
-    <!--&lt;!&ndash;android:text="PROCEED PAYMENT"&ndash;&gt;-->
-    <!--&lt;!&ndash;android:textColor="#fff" />&ndash;&gt;-->
+    <!--<Button-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginTop="30dp"-->
+    <!--android:background="#000"-->
+    <!--android:foreground="?attr/selectableItemBackground"-->
+    <!--android:text="PROCEED PAYMENT"-->
+    <!--android:textColor="#fff" />-->
 
-    <!--&lt;!&ndash;</LinearLayout>&ndash;&gt;-->
-
-
+    <!--</LinearLayout>-->
 
 
 
@@ -884,4 +1038,5 @@ Avengers Infinity War Classic Jacket is made of 100% original faux leather which
 
 
 
-</android.support.design.widget.CoordinatorLayout>
+
+

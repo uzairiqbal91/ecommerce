@@ -22,6 +22,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -93,6 +94,12 @@ public class ProductDetailActivity extends AppCompatActivity {
     NestedScrollView bottomLinearLayout;
     BottomSheetBehavior<NestedScrollView> bottomNavigationView;
 
+    TextView textview_Qty;
+    ImageButton plusImagebtn;
+    ImageButton minusImgbtn;
+
+    int productQty=0;
+
 
 
     @Override
@@ -116,6 +123,8 @@ public class ProductDetailActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         toolbar.getNavigationIcon().setColorFilter(getResources().getColor(R.color.colorPrimary), PorterDuff.Mode.SRC_ATOP);
+
+        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
 
 
 //        working on size buttons
@@ -216,6 +225,38 @@ public class ProductDetailActivity extends AppCompatActivity {
 
 
 
+        textview_Qty=findViewById(R.id.textview_quanity);
+        plusImagebtn=findViewById(R.id.textview_plus);
+        minusImgbtn=findViewById(R.id.button_minus);
+
+
+        plusImagebtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                productQty++;
+                textview_Qty.setText(String.valueOf(productQty));
+
+            }
+        });
+
+        minusImgbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(productQty>1) {
+                    productQty--;
+                    textview_Qty.setText(String.valueOf(productQty));
+                }
+
+            }
+        });
+
+
+
+
+
+
+
 
 
 
@@ -227,6 +268,7 @@ public class ProductDetailActivity extends AppCompatActivity {
 
         sliderProductAdapter=new sliderProductAdapter(this);
 
+
         viewPager.setAdapter(sliderProductAdapter);
 
 
@@ -235,7 +277,7 @@ public class ProductDetailActivity extends AppCompatActivity {
 
 
 //        for suggestion bar
-        getData();
+       // getData();
 
 
         sharedPreference = new MySharedPreference(ProductDetailActivity.this);
@@ -248,109 +290,112 @@ public class ProductDetailActivity extends AppCompatActivity {
         buttonaddtocart=findViewById(R.id.addtocart);
 
 
-//        final SegmentedButtonGroup segmentedButtonGroup=findViewById(R.id.segmentedBtnGrp);
-//
-//segmentedButtonGroup.setOnClickedButtonPosition(new SegmentedButtonGroup.OnClickedButtonPosition() {
-//    @Override
-//    public void onClickedButtonPosition(int position) {
-//
-//        switch (position){
-//            case 0 :
-//
-//            size="M";
-//            break;
-//
-//
-//            case 1 :
-//
-//                size="L";
-//                break;
-//
-//            case 2 :
-//
-//                size="XL";
-//                break;
-//
-//            case 3 :
-//
-//                size="2-XL";
-//                break;
-//            case 4 :
-//
-//                size="3-XL";
-//                break;
-//            case 5 :
-//
-//                size="XS";
-//                break;
-//
-//                default:
-//                    size="M";
-//                    break;
-//
-//
-//
-//
-//
-//        }
-//
-//
-//    }
-//});
+        final SegmentedButtonGroup segmentedButtonGroup=findViewById(R.id.segmentedBtnGrp);
+
+segmentedButtonGroup.setOnClickedButtonPosition(new SegmentedButtonGroup.OnClickedButtonPosition() {
+    @Override
+    public void onClickedButtonPosition(int position) {
+
+        switch (position){
+            case 0 :
+
+            size="M";
+            break;
+
+
+            case 1 :
+
+                size="L";
+                break;
+
+            case 2 :
+
+                size="XL";
+                break;
+
+            case 3 :
+
+                size="2-XL";
+                break;
+            case 4 :
+
+                size="3-XL";
+                break;
+            case 5 :
+
+                size="XS";
+                break;
+
+                default:
+                    size="M";
+                    break;
+
+
+
+
+
+        }
+
+
+    }
+});
 //
 //
 
 
 
-//        buttonaddtocart.setOnClickListener(new View.OnClickListener() {
+        buttonaddtocart.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+
+
+
+                Toast.makeText(getApplicationContext(),size,Toast.LENGTH_LONG).show();
+
+                addCartProducts.add(new Book(String.valueOf(title.getText()),String.valueOf(Integer.parseInt((String) price.getText())*productQty),"Description book",productImage,size,String.valueOf(productQty)));
+                cart_count=addCartProducts.size();
+
+                invalidateOptionsMenu();
+
+
+
+
+
+
+
+
+
+
+
+
+
+//                String productsFromCart = sharedPreference.retrieveProductFromCart();
+//                if(productsFromCart.equals("")){
+//                    List<Book> cartProductList = new ArrayList<Book>();
+//                    cartProductList.add(singleProduct);
+//                    String cartValue = gson.toJson(cartProductList);
+//                    sharedPreference.addProductToTheCart(cartValue);
+//                    cartProductNumber = cartProductList.size();
+//                }
+//                else{
+//                    String productsInCart = sharedPreference.retrieveProductFromCart();
+//                    Book[] storedProducts = gson.fromJson(productsInCart, Book[].class);
 //
-//            @Override
-//            public void onClick(View v) {
-//
-//                Toast.makeText(getApplicationContext(),size,Toast.LENGTH_LONG).show();
-//
-//                addCartProducts.add(new Book(String.valueOf(title.getText()),String.valueOf(price.getText()),"Description book",productImage,size));
-//                cart_count=addCartProducts.size();
-//
+//                    List<Book> allNewProduct = convertObjectArrayToListObject(storedProducts);
+//                    allNewProduct.add(singleProduct);
+//                    String addAndStoreNewProduct = gson.toJson(allNewProduct);
+//                    sharedPreference.addProductToTheCart(addAndStoreNewProduct);
+//                    cartProductNumber = allNewProduct.size();
+//                }
+//                sharedPreference.addProductCount(cartProductNumber);
 //                invalidateOptionsMenu();
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-////                String productsFromCart = sharedPreference.retrieveProductFromCart();
-////                if(productsFromCart.equals("")){
-////                    List<Book> cartProductList = new ArrayList<Book>();
-////                    cartProductList.add(singleProduct);
-////                    String cartValue = gson.toJson(cartProductList);
-////                    sharedPreference.addProductToTheCart(cartValue);
-////                    cartProductNumber = cartProductList.size();
-////                }
-////                else{
-////                    String productsInCart = sharedPreference.retrieveProductFromCart();
-////                    Book[] storedProducts = gson.fromJson(productsInCart, Book[].class);
-////
-////                    List<Book> allNewProduct = convertObjectArrayToListObject(storedProducts);
-////                    allNewProduct.add(singleProduct);
-////                    String addAndStoreNewProduct = gson.toJson(allNewProduct);
-////                    sharedPreference.addProductToTheCart(addAndStoreNewProduct);
-////                    cartProductNumber = allNewProduct.size();
-////                }
-////                sharedPreference.addProductCount(cartProductNumber);
-////                invalidateOptionsMenu();
-//
-//
-//
-//            }
-//        });
+
+
+
+            }
+        });
 
 
 

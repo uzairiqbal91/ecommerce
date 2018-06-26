@@ -255,6 +255,7 @@ Pockets: Front Pocket"
 
 
 
+
             <!--<TextView-->
                 <!--android:layout_width="wrap_content"-->
                 <!--android:layout_height="wrap_content"-->
@@ -332,10 +333,10 @@ Pockets: Front Pocket"
     </LinearLayout>
 
 
-    <include layout="@layout/item_bottom_sheet"
+    <!--<include layout="@layout/item_bottom_sheet"-->
 
 
-        />
+        <!--/>-->
 
 
 

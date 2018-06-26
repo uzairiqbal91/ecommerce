@@ -17,7 +17,7 @@ public class CheckRecyclerViewHolder extends RecyclerView.ViewHolder{
     public CheckRecyclerViewHolder(View itemView) {
         super(itemView);
 
-        quantity = (TextView)itemView.findViewById(R.id.quantity);
+        quantity = (TextView)itemView.findViewById(R.id.product_qty);
         productName =(TextView)itemView.findViewById(R.id.product_name);
         productPrice = (TextView)itemView.findViewById(R.id.product_price);
         removeProduct = (Button) itemView.findViewById(R.id.removeBtn);

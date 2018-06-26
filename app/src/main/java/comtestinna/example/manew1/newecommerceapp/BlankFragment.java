@@ -55,6 +55,7 @@ public class BlankFragment extends Fragment {
         lstBook.add(new Book("Maria Semples","$200","Description book",R.drawable.mariasemples));
         lstBook.add(new Book("The Martian","$130","Description book",R.drawable.themartian));
         lstBook.add(new Book("He Died with...","$300","Description book",R.drawable.hediedwith));
+
         RecyclerView myrv = (RecyclerView) rootView.findViewById(R.id.rv_recycler_view);
 
          myAdapter = new  MyAdapter(getActivity(),lstBook);

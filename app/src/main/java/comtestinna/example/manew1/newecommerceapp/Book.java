@@ -13,7 +13,15 @@ public class Book {
     private String Description ;
     private int Thumbnail ;
     private String Size;
+    private String qty;
 
+    public String getQty() {
+        return qty;
+    }
+
+    public void setQty(String qty) {
+        this.qty = qty;
+    }
 
     public Book() {
     }
@@ -25,12 +33,13 @@ public class Book {
         Thumbnail = thumbnail;
     }
 
-    public Book(String title, String price, String description, int thumbnail,String size) {
+    public Book(String title, String price, String description, int thumbnail,String size,String Qty) {
         Title = title;
         Price = price;
         Size=size;
         Description = description;
         Thumbnail = thumbnail;
+        qty=Qty;
     }
 
     public String getTitle() {

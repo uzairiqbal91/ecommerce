@@ -91,6 +91,8 @@ public class FragmentTwo extends Fragment {
 
 
         sliderDotspanel = (LinearLayout) rootView.findViewById(R.id.SliderDots);
+
+
         viewPagerAdapter = new ViewPagerAdapter(rootView.getContext(), map.get("Men"));
 
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {

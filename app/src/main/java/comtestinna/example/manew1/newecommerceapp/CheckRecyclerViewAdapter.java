@@ -51,6 +51,7 @@ public class CheckRecyclerViewAdapter extends RecyclerView.Adapter<CheckRecycler
         holder.productPrice.setText(mProductObject.get(position).getPrice());
 
         holder.productSize.setText(mProductObject.get(position).getSize());
+        holder.quantity.setText(mProductObject.get(position).getQty());
 
 
 

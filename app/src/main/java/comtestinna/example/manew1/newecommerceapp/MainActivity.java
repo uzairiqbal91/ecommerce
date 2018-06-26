@@ -351,7 +351,9 @@ public class MainActivity extends AppCompatActivity
 
     public void displayFragment() {
         // Instantiate the fragment.
-        FragmentOne simpleFragment = new FragmentOne();
+
+//        FragmentOne simpleFragment = new FragmentOne();
+        main_fragment simpleFragment = new main_fragment();
         // Get the FragmentManager and start a transaction.
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager
