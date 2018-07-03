@@ -32,14 +32,171 @@
 
 
         >
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="192dp"
+    >
+        <LinearLayout android:layout_height="match_parent" android:layout_width="match_parent" android:orientation="vertical" >
 
-        <ExpandableListView
-            android:id="@+id/left_drawer"
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/layout_home"
+                >
+                <ImageView
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="10dp"
+                    android:src="@drawable/ic_home_black_24dp"
+                    android:paddingTop="10dp"
+                    android:id="@+id/iconimage"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:padding="10dp"
+                    android:textColor="#000000"
+                    android:text="Home"
+                    android:textSize="16sp"
+                    android:id="@+id/submenu"
+                    android:gravity="center_vertical" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/layout_profile"
+                >
+                <ImageView
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="10dp"
+                    android:src="@drawable/ic_menu_send"
+                    android:paddingTop="10dp"
+                    android:id="@+id/iconimage1"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:padding="10dp"
+                    android:textColor="#000000"
+                    android:text="User Profile"
+                    android:textSize="16sp"
+                    android:id="@+id/profile"
+                    android:gravity="center_vertical" />
+            </LinearLayout>
+            <ExpandableListView android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/left_drawer" android:layout_marginTop="10dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/layout_recent"
+                >
+                <ImageView
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="10dp"
+                    android:src="@drawable/ic_menu_gallery"
+                    android:paddingTop="10dp"
+                    android:id="@+id/iconimage2"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:padding="10dp"
+                    android:textColor="#000000"
+                    android:text="Most Recent"
+                    android:textSize="16sp"
+                    android:id="@+id/recent"
+                    android:gravity="center_vertical" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/layout_deals"
+                >
+                <ImageView
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="10dp"
+                    android:src="@drawable/ic_menu_send"
+                    android:paddingTop="10dp"
+                    android:id="@+id/iconimage3"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:padding="10dp"
+                    android:textColor="#000000"
+                    android:text="Deals"
+                    android:textSize="16sp"
+                    android:id="@+id/deals"
+                    android:gravity="center_vertical" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/layout_topSeller"
+                >
+                <ImageView
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="10dp"
+                    android:src="@drawable/ic_menu_gallery"
+                    android:paddingTop="10dp"
+                    android:id="@+id/iconimage4"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:padding="10dp"
+                    android:textColor="#000000"
+                    android:text="Top Selling"
+                    android:textSize="16sp"
+                    android:id="@+id/topSeller"
+                    android:gravity="center_vertical" />
+            </LinearLayout>
+            <LinearLayout
             android:layout_width="match_parent"
-            android:layout_marginTop="192dp"
-            android:layout_height="match_parent" />
+            android:layout_height="wrap_content"
+            android:id="@+id/layout_aboutUs"
+            >
+            <ImageView
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:paddingBottom="10dp"
+                android:paddingLeft="10dp"
+                android:src="@drawable/ic_menu_gallery"
+                android:paddingTop="10dp"
+                android:id="@+id/iconimage5"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:padding="10dp"
+                android:textColor="#000000"
+                android:text="About Us"
+                android:textSize="16sp"
+                android:id="@+id/aboutUs"
+                android:gravity="center_vertical" />
+        </LinearLayout>
 
 
+
+        </LinearLayout>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:text="Log Out"
+        android:textColor="@color/color_sec"
+        android:layout_alignParentBottom="true"
+
+
+
+        />
+
+
+</RelativeLayout>
 
 
 

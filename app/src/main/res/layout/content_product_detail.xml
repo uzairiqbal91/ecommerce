@@ -333,10 +333,10 @@ Pockets: Front Pocket"
     </LinearLayout>
 
 
-    <!--<include layout="@layout/item_bottom_sheet"-->
+    <include layout="@layout/item_bottom_sheet"
 
 
-        <!--/>-->
+        />
 
 
 

@@ -1,0 +1,45 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+
+
+
+
+
+
+
+
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+
+        android:textColor="@color/colorPrimary"
+        android:layout_height="wrap_content"
+        android:textSize="15dp"
+        android:text="Avengers Infinity War is the third most expensive film made. The whole avenger series is purely amazing and fun to watch. The characters are loved and followed by many especially when it comes to dressing and style. It is in this film where this jacket was featured.
+
+Avengers Infinity War Classic Jacket is made of 100% original faux leather which makes it ery durable. The inner viscose lining keeps you warm and cozy from inside. The jacket is available in blue and black color which makes it very eye-catching. The white pattern on the left shoulder and armor like the look from the front and a patch on the shoulder give you a very strong look. The jacket comes with inner pockets and two front zipped pockets on the waist so you can keep your things safe. It features full sleeves, standup collar and zipper closure from the front. The jacket is available in various sizes with an additional option of tailor fitting if required
+Avengers Infinity War is the third most expensive film made. The whole avenger series is purely amazing and fun to watch. The characters are loved and followed by many especially when it comes to dressing and style. It is in this film where this jacket was featured."
+
+
+
+
+
+
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+
+        />
+
+
+
+
+</LinearLayout>
+
+

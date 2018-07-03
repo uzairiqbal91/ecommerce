@@ -1,5 +1,6 @@
 package comtestinna.example.manew1.newecommerceapp;
 
+import comtestinna.example.manew1.newecommerceapp.MainActivity;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
@@ -170,21 +171,23 @@ public class FragmentTwo extends Fragment {
 
         return rootView;
     }
+
     @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        mActivity = getActivity();
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        mActivity=activity;
     }
+
     @Override
     public void onDetach() {
         super.onDetach();
-        mActivity = null;
+//        mActivity = null;
     }
 
     public class MyTimerTask extends TimerTask {
         @Override
         public void run() {
-            getActivity().runOnUiThread(new Runnable() {
+            mActivity.runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
 

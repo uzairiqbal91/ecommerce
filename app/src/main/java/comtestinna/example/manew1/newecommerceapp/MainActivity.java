@@ -1,13 +1,16 @@
 package comtestinna.example.manew1.newecommerceapp;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
@@ -27,9 +30,14 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ExpandableListView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -47,11 +55,29 @@ public class MainActivity extends AppCompatActivity
     MaterialSearchView materialSearchView;
     RecyclerView results;
     SearchView searchView;
-    ExpandableListView ev_list;
+    ExpandableListView expandableList;
     public static UserDetail userDetail;
     public static Context activityContext;
     public static boolean userCheck=false;
     public static User_SharedPreference dataProccessor;
+
+    String fragmentTg;
+
+
+    ExpendibleListAdapter mMenuAdapter;
+    static FragmentManager  fragmentManager ;
+
+    List<String> listDataHeader;
+    DrawerLayout drawer;
+    HashMap<String, List<String>> listDataChild;
+    static int[] icon = { R.drawable.ic_menu_camera, R.drawable.ic_menu_camera,
+            R.drawable.ic_menu_camera, R.drawable.ic_menu_camera,
+            R.drawable.ic_menu_camera, R.drawable.ic_menu_camera, R.drawable.ic_menu_camera};
+
+    // Saved instance state key.
+    static final String STATE_FRAGMENT = "state_of_fragment";
+
+    View view_Group;
    // public static List<OrderDetail> order;
 
 
@@ -60,9 +86,18 @@ public class MainActivity extends AppCompatActivity
     ProfileFragment simpleFragment = new ProfileFragment();
 
     // Saved instance state key.
-    static final String STATE_FRAGMENT = "state_of_fragment";
+
     String value;
 
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        if(android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.JELLY_BEAN_MR2) {
+            expandableList.setIndicatorBounds(expandableList.getRight()- 80, expandableList.getWidth());
+        } else {
+            expandableList.setIndicatorBoundsRelative(expandableList.getRight()- 80, expandableList.getWidth());
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,14 +120,194 @@ public class MainActivity extends AppCompatActivity
 //            }
 //        });
 ////
-        final DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-            this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        navigationView.setItemIconTintList(null);
+        expandableList = (ExpandableListView) findViewById(R.id.left_drawer);
+
+
+        fragmentManager = getSupportFragmentManager();
+
+
+        if (navigationView != null) {
+            setupDrawerContent(navigationView);
+        }
+
+        prepareListData();
+        mMenuAdapter = new ExpendibleListAdapter(this, listDataHeader, listDataChild);
+
+        // setting list adapter
+        expandableList.setAdapter(mMenuAdapter);
+
+        expandableList.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+            @Override
+            public boolean onChildClick(ExpandableListView expandableListView,
+                                        View view,
+                                        int groupPosition,
+                                        int childPosition, long id) {
+                //Log.d("DEBUG", "submenu item clicked");
+                Toast.makeText(MainActivity.this,
+                        "Header: "+String.valueOf(groupPosition) +
+                                "\nItem: "+ String.valueOf(childPosition), Toast.LENGTH_SHORT)
+                        .show();
+
+
+
+                if(childPosition==0)
+                {
+
+                    displaySecondFragment();
+
+                }
+                view_Group=view;
+                view.setSelected(true);
+                if (view_Group != null) {
+                    view_Group.setBackgroundColor(Color.parseColor("#ffffff"));
+                }
+
+                view_Group.setBackgroundColor(Color.parseColor("#DDDDDD"));
+                drawer.closeDrawers();
+
+                return false;
+            }
+        });
+        expandableList.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
+            @Override
+            public boolean onGroupClick(ExpandableListView expandableListView, View view, int i, long l) {
+                //Log.d("DEBUG", "heading clicked");
+
+                Toast.makeText(MainActivity.this,
+                        "Clicekd: ", Toast.LENGTH_SHORT)
+                        .show();
+
+
+
+                return false;
+            }
+        });
+
+
+        LinearLayout layout_profile=findViewById(R.id.layout_profile);
+        layout_profile.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("RestrictedApi")
+            @Override
+            public void onClick(View view) {
+
+                fragmentTg="MainFragment";
+                Toast.makeText(MainActivity.this,
+                        "ClicekdHome: ", Toast.LENGTH_SHORT)
+                        .show();
+                displayProfileFragment();
+                drawer.closeDrawers();
+                //   Toast.makeText(getApplicationContext(),String.valueOf(getSupportFragmentManager().getFragments().get(0).isMenuVi\sible()),Toast.LENGTH_LONG).show();
+
+            }
+
+
+
+        });
+
+
+        LinearLayout layout_home=findViewById(R.id.layout_home);
+        layout_home.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("RestrictedApi")
+            @Override
+            public void onClick(View view) {
+
+                fragmentTg="MainFragment";
+                Toast.makeText(MainActivity.this,
+                        "ClicekdHome: ", Toast.LENGTH_SHORT)
+                        .show();
+               displayMainFragment();
+                    drawer.closeDrawers();
+                 //   Toast.makeText(getApplicationContext(),String.valueOf(getSupportFragmentManager().getFragments().get(0).isMenuVi\sible()),Toast.LENGTH_LONG).show();
+
+                }
+
+
+
+        });
+
+
+        LinearLayout layout_recent=findViewById(R.id.layout_recent);
+        layout_recent.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("RestrictedApi")
+            @Override
+            public void onClick(View view) {
+
+               // fragmentTg="MainFragment";
+                Toast.makeText(MainActivity.this,
+                        "Clicekd recent: ", Toast.LENGTH_SHORT)
+                        .show();
+                displayRecentListFragment();
+                drawer.closeDrawers();
+                //   Toast.makeText(getApplicationContext(),String.valueOf(getSupportFragmentManager().getFragments().get(0).isMenuVi\sible()),Toast.LENGTH_LONG).show();
+
+            }
+
+
+
+        });
+
+        LinearLayout layout_deals=findViewById(R.id.layout_deals);
+        layout_deals.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("RestrictedApi")
+            @Override
+            public void onClick(View view) {
+
+                // fragmentTg="MainFragment";
+                Toast.makeText(MainActivity.this,
+                        "Clicekd delas: ", Toast.LENGTH_SHORT)
+                        .show();
+                displayDealListFragment();
+                drawer.closeDrawers();
+                //   Toast.makeText(getApplicationContext(),String.valueOf(getSupportFragmentManager().getFragments().get(0).isMenuVi\sible()),Toast.LENGTH_LONG).show();
+
+            }
+
+
+
+        });
+
+        LinearLayout layout_topseller=findViewById(R.id.layout_topSeller);
+        layout_topseller.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("RestrictedApi")
+            @Override
+            public void onClick(View view) {
+
+                // fragmentTg="MainFragment";
+                Toast.makeText(MainActivity.this,
+                        "Clicekd topsellers: ", Toast.LENGTH_SHORT)
+                        .show();
+                displayTopSellerListFragment();
+                drawer.closeDrawers();
+                //   Toast.makeText(getApplicationContext(),String.valueOf(getSupportFragmentManager().getFragments().get(0).isMenuVi\sible()),Toast.LENGTH_LONG).show();
+
+            }
+
+
+
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
       // accesign navigation view header
         View header = navigationView.getHeaderView(0);
@@ -242,11 +457,11 @@ public class MainActivity extends AppCompatActivity
 
 
 
-        ev_list = (ExpandableListView) findViewById(R.id.left_drawer);
-
-
-
-        ev_list.setAdapter(obj_adapter);
+//        ev_list = (ExpandableListView) findViewById(R.id.left_drawer);
+//
+//
+//
+//        ev_list.setAdapter(obj_adapter);
 
         // working for searching
 
@@ -332,6 +547,155 @@ public class MainActivity extends AppCompatActivity
 
     }
 
+    public void displaySecondFragment() {
+        // Instantiate the fragment.
+        fragmentTg="SecondActivity";
+
+        try {
+            FragmentTwo simpleFragment = new FragmentTwo();
+
+            // Get the FragmentManager and start a transaction.
+            FragmentManager  fragmentManager ;
+            FragmentTransaction fragmentTransaction ;
+           fragmentManager = getSupportFragmentManager();
+              fragmentTransaction = fragmentManager
+                    .beginTransaction();
+
+            // Add the SimpleFragment.
+            fragmentTransaction.replace(R.id.fragment_container, simpleFragment);
+            fragmentTransaction.addToBackStack(null).commit();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+        // Update the Button text.
+
+    }
+
+    public static void displayRecentListFragment() {
+        // Instantiate the fragment.
+
+
+        try {
+            FragmentListRecent simpleFragment = new FragmentListRecent();
+
+            // Get the FragmentManager and start a transaction.
+            FragmentTransaction fragmentTransaction ;
+
+            fragmentTransaction = fragmentManager
+                    .beginTransaction();
+
+            // Add the SimpleFragment.
+            fragmentTransaction.replace(R.id.fragment_container, simpleFragment);
+            fragmentTransaction.addToBackStack(null).commit();
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+        // Update the Button text.
+
+    }
+
+    public static void displayDealListFragment() {
+        // Instantiate the fragment.
+
+        try {
+            FragmentDealsList simpleFragment = new FragmentDealsList();
+
+            // Get the FragmentManager and start a transaction.
+            FragmentTransaction fragmentTransaction ;
+
+            fragmentTransaction = fragmentManager
+                    .beginTransaction();
+
+            // Add the SimpleFragment.
+            fragmentTransaction.replace(R.id.fragment_container, simpleFragment);
+            fragmentTransaction.addToBackStack(null).commit();
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+        // Update the Button text.
+
+    }
+
+    public  static  void displayTopSellerListFragment() {
+        // Instantiate the fragment.
+
+
+        try {
+            FragmentTopSellerList simpleFragment = new FragmentTopSellerList();
+
+            // Get the FragmentManager and start a transaction.
+
+
+
+            FragmentTransaction fragmentTransaction ;
+
+            fragmentTransaction = fragmentManager
+                    .beginTransaction();
+
+            // Add the SimpleFragment.
+            fragmentTransaction.replace(R.id.fragment_container, simpleFragment);
+            fragmentTransaction.addToBackStack(null).commit();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+        // Update the Button text.
+
+    }
+
+
+
+    private void prepareListData() {
+        listDataHeader = new ArrayList<String>();
+        listDataChild = new HashMap<String, List<String>>();
+
+        // Adding data header
+        listDataHeader.add("Categories");
+
+
+        // Adding child data
+        List<String> heading1 = new ArrayList<String>();
+        heading1.add("Women");
+        heading1.add("Men");
+        heading1.add("Movies");
+        heading1.add("Tv Series");
+        heading1.add("Models");
+        heading1.add("Games");
+
+
+
+
+
+        listDataChild.put(listDataHeader.get(0), heading1);// Header, Child data
+
+
+    }
+
+    private void setupDrawerContent(NavigationView navigationView) {
+        navigationView.setNavigationItemSelectedListener(
+                new NavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(MenuItem menuItem) {
+                        menuItem.setChecked(true);
+                        drawer.closeDrawers();
+                        return true;
+                    }
+                });
+    }
+
     private List<Book> filter(List<Book> pl,String query)
     {
         query=query.toLowerCase();
@@ -353,15 +717,23 @@ public class MainActivity extends AppCompatActivity
         // Instantiate the fragment.
 
 //        FragmentOne simpleFragment = new FragmentOne();
-        main_fragment simpleFragment = new main_fragment();
-        // Get the FragmentManager and start a transaction.
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager
-                .beginTransaction();
+        fragmentTg="MainFragment";
 
-        // Add the SimpleFragment.
-        fragmentTransaction.add(R.id.fragment_container,
-                simpleFragment).addToBackStack(null).commit();
+        try {
+            main_fragment simpleFragment = new main_fragment();
+            // Get the FragmentManager and start a transaction.
+            FragmentManager  fragmentManager ;
+            FragmentTransaction fragmentTransaction ;
+            fragmentManager = getSupportFragmentManager();
+            fragmentTransaction = fragmentManager
+                    .beginTransaction();
+
+            // Add the SimpleFragment.
+            fragmentTransaction.add(R.id.fragment_container,
+                    simpleFragment).addToBackStack(null).commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         // Update the Button text.
 
@@ -371,16 +743,44 @@ public class MainActivity extends AppCompatActivity
         // Instantiate the fragment.
 
         // Get the FragmentManager and start a transaction.
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager
-                .beginTransaction();
-        fragmentTransaction.replace(R.id.fragment_container, simpleFragment);
-        fragmentTransaction.addToBackStack(null).commit();
+        fragmentTg="ProfileFragment";
+
+        try {
+            ProfileFragment simpleFragment = new ProfileFragment();
+            FragmentManager  fragmentManager ;
+            FragmentTransaction fragmentTransaction ;
+             fragmentManager = getSupportFragmentManager();
+              fragmentTransaction = fragmentManager
+                    .beginTransaction();
+            fragmentTransaction.replace(R.id.fragment_container, simpleFragment);
+            fragmentTransaction.addToBackStack(null).commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
 
         // Add the SimpleFragment.
 
 
         // Update the Button text.
+
+    }
+
+    public void displayMainFragment()
+    {
+        try {
+            main_fragment simpleFragment = new main_fragment();
+            // Get the FragmentManager and start a transaction.
+            FragmentManager  fragmentManager ;
+            FragmentTransaction fragmentTransaction ;
+            fragmentManager = getSupportFragmentManager();
+           fragmentTransaction = fragmentManager
+                    .beginTransaction();
+            fragmentTransaction.replace(R.id.fragment_container, simpleFragment);
+            fragmentTransaction.addToBackStack(null).commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
     }
 //    public void closeFragment() {
@@ -471,20 +871,20 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
-        }
+//
+//        if (id == R.id.nav_camera) {
+//            // Handle the camera action
+//        } else if (id == R.id.nav_gallery) {
+//
+//        } else if (id == R.id.nav_slideshow) {
+//
+//        } else if (id == R.id.nav_manage) {
+//
+//        } else if (id == R.id.nav_share) {
+//
+//        } else if (id == R.id.nav_send) {
+//
+//        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

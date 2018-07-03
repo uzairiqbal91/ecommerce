@@ -7,6 +7,8 @@ import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.os.Build;
 import android.os.Bundle;
+
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.BottomNavigationView;
@@ -19,9 +21,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -29,9 +34,13 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.alespero.expandablecardview.ExpandableCardView;
+import com.github.aakira.expandablelayout.ExpandableRelativeLayout;
+import com.github.aakira.expandablelayout.ExpandableWeightLayout;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -100,6 +109,10 @@ public class ProductDetailActivity extends AppCompatActivity {
 
     int productQty=0;
 
+    Button press;
+    Button press1;
+     int height ;
+
 
 
     @Override
@@ -110,6 +123,9 @@ public class ProductDetailActivity extends AppCompatActivity {
         invalidateOptionsMenu();
 
     }
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -126,6 +142,20 @@ public class ProductDetailActivity extends AppCompatActivity {
 
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
 
+
+         final ScrollView mScrollView;
+
+        mScrollView = (ScrollView) findViewById(R.id.scrollview);
+//
+//        new Handler().postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//
+//                    // Scroll 1000px down
+//                    mScrollView.smoothScrollTo(0, 1000);
+//
+//            }
+//        }, 150);
 
 //        working on size buttons
 
@@ -173,6 +203,49 @@ public class ProductDetailActivity extends AppCompatActivity {
         btnsize4=(Button) findViewById(R.id.sizebtn4);
         btnsize5=(Button) findViewById(R.id.sizebtn5);
         btnsize6=(Button) findViewById(R.id.sizebtn6);
+
+
+
+//        ExpandableRelativeLayout expandableLayout1, expandableLayout2;
+//        expandableLayout1 = (ExpandableRelativeLayout) findViewById(R.id.expandableLayout1);
+//        expandableLayout1.toggle(); // toggle expand and collapse
+
+
+        ExpandableCardView card = findViewById(R.id.profile);
+
+//        card.setOnExpandedListener(new ExpandableCardView.OnExpandedListener() {
+//            @Override
+//            public void onExpandChanged(View v, boolean isExpanded) {
+//               // Toast.makeText(getApplicationContext(), isExpanded ? "Expanded!" : "Collapsed!", Toast.LENGTH_SHORT).show();
+//            }
+//        });
+
+
+
+        ExpandableCardView card1 = findViewById(R.id.profile1);
+
+//        card1.setOnExpandedListener(new ExpandableCardView.OnExpandedListener() {
+//            @Override
+//            public void onExpandChanged(View v, boolean isExpanded) {
+//               // Toast.makeText(getApplicationContext(), isExpanded ? "Expanded!" : "Collapsed!", Toast.LENGTH_SHORT).show();
+//            }
+//        });
+
+
+        ExpandableCardView card2 = findViewById(R.id. profile2);
+
+//        card2.setOnExpandedListener(new ExpandableCardView.OnExpandedListener() {
+//            @Override
+//            public void onExpandChanged(View v, boolean isExpanded) {
+//               // Toast.makeText(getApplicationContext(), isExpanded ? "Expanded!" : "Collapsed!", Toast.LENGTH_SHORT).show();
+//            }
+//        });
+
+
+
+
+//        expandableLayout2 = (ExpandableRelativeLayout) findViewById(R.id.expandableLayout2);
+//        expandableLayout2.toggle(); // toggle expand and collapse
 
 
 
@@ -415,6 +488,16 @@ segmentedButtonGroup.setOnClickedButtonPosition(new SegmentedButtonGroup.OnClick
 
 
 
+//// move position of child view
+//        expandableLayout.moveChild(0);
+//// move optional position
+//        expandableLayout.move(500);
+//
+//// set base position which is close position
+//        expandableLayout.setClosePosition(500);
+
+
+
 
 
 
@@ -422,11 +505,51 @@ segmentedButtonGroup.setOnClickedButtonPosition(new SegmentedButtonGroup.OnClick
 
 
 // this code for bottom navigation view
-//        bottomLinearLayout=(NestedScrollView) findViewById(R.id.bottomsheet);
+//        bottomLinearLayout=(NestedScrollView) findViewById(R.id.bottomsheet1);
 //        bottomNavigationView= BottomSheetBehavior.from(bottomLinearLayout);
+
+
+
+
 //
-//       bottomNavigationView.setPeekHeight(200);
-//        bottomNavigationView.setState(BottomSheetBehavior.STATE_COLLAPSED);
+
+
+
+
+//         press=findViewById(R.id.press);
+//         press1=findViewById(R.id.press1);
+
+//        press.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                bottomNavigationView.setState(BottomSheetBehavior.STATE_EXPANDED);    // Will show the bottom sheet
+//                press1.setVisibility(View.VISIBLE);
+//              //  bottomNavigationView.setState(BottomSheetBehavior.STATE_COLLAPSED);
+//
+//            }
+//        });
+//
+//        press1.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                bottomNavigationView.setState(BottomSheetBehavior.STATE_COLLAPSED);    // Will show the bottom sheet
+//                press1.setVisibility(View.GONE);
+//                //  bottomNavigationView.setState(BottomSheetBehavior.STATE_COLLAPSED);
+//
+//            }
+//        });
+
+
+
+
+
+
+
+
+
+//        bottomNavigationView.setHideable(true);
+
+
 
 
 
@@ -435,16 +558,19 @@ segmentedButtonGroup.setOnClickedButtonPosition(new SegmentedButtonGroup.OnClick
 //            @Override
 //            public void onStateChanged(@NonNull View bottomSheet, int newState) {
 //                if (newState == BottomSheetBehavior.STATE_COLLAPSED) {
-//                    bottomLinearLayout.setVisibility(View.VISIBLE);
+//                    bottomNavigationView.setState(BottomSheetBehavior.STATE_EXPANDED);;
 //                }
 //
 //                if (newState == BottomSheetBehavior.STATE_EXPANDED) {
-//                    bottomLinearLayout.setVisibility(View.GONE);
+//                    bottomLinearLayout.setVisibility(View.VISIBLE);
+//                }if (newState == BottomSheetBehavior.STATE_DRAGGING) {
+//                    bottomLinearLayout.setVisibility(View.VISIBLE);
 //                }
 //
-//                if (newState == BottomSheetBehavior.STATE_DRAGGING) {
-//                    bottomLinearLayout.setVisibility(View.GONE);
-//                }
+//
+//
+//
+//
 //            }
 //
 //            @Override
@@ -458,10 +584,41 @@ segmentedButtonGroup.setOnClickedButtonPosition(new SegmentedButtonGroup.OnClick
 
 
     }
+
+
+//    public boolean onTouchEvent(MotionEvent event) {
+//
+//        if(event.getAction()==MotionEvent.ACTION_UP)
+//        {
+//            bottomNavigationView.setState(BottomSheetBehavior.STATE_EXPANDED);    // Will show the bottom sheet
+//            press1.setVisibility(View.VISIBLE);
+//
+//
+//        }
+//
+//
+//        if(event.getAction()==MotionEvent.ACTION_UP)
+//        {
+//            bottomNavigationView.setState(BottomSheetBehavior.STATE_COLLAPSED);    // Will show the bottom sheet
+//            press1.setVisibility(View.GONE);
+//
+//
+//        }
+//
+//
+//
+//        return super.onTouchEvent(event);
+//    }
     private List<Book> convertObjectArrayToListObject(Book[] allProducts){
         List<Book> mProduct = new ArrayList<Book>();
         Collections.addAll(mProduct, allProducts);
         return mProduct;
+    }
+
+    public int pxToDp(int px) {
+        DisplayMetrics displayMetrics = getApplicationContext().getResources().getDisplayMetrics();
+        int dp = Math.round(px / (displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT));
+        return dp;
     }
     private void getData(){
 

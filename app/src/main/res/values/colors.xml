@@ -8,7 +8,12 @@
     <color name="transparent">#00000000</color>
     <color name="textColor">#6e6e6e</color>
     <color name="coloractivity">#D3D3D3</color>
+    <color name="dot_active">#000000</color>
 
+    <!-- dots inactive colors -->
+
+
+    <color name="dot_inactive">#cccccc</color>
     <color name="editTextBG">#DADADA</color>
 
 </resources>

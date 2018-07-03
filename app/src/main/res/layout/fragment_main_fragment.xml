@@ -72,11 +72,47 @@
 
             />
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="View All"
+
+            android:textColor="@color/colorAccent"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+
+            android:background="@color/color_sec"
+            android:layout_gravity="right"
+           android:paddingRight="10dp"
+            android:paddingTop="10dp"
+            android:gravity="right|center"
+
+            android:id="@+id/textview_viewall"
+
+
+
+
+
+
+
+
+
+
+
+
+
+            />
+
         <android.support.v4.view.ViewPager
             android:id="@+id/viewpager_main"
             android:layout_width="match_parent"
             android:layout_height="190dp"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+
+            >
+
+
+
+        </android.support.v4.view.ViewPager>
 
 
         <View

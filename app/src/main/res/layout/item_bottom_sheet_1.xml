@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <android.support.v4.widget.NestedScrollView
+
+        android:orientation="vertical"
+        android:background="@color/color_sec"
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:id="@+id/bottomsheet1"
+
+        app:layout_behavior="android.support.design.widget.BottomSheetBehavior"
+
+        android:padding="16dp"
+        app:behavior_hideable="false"
+        app:behavior_peekHeight="100dp"
+
+        android:scrollbars="vertical"
+        android:fillViewport="true"
+
+
+
+
+        >
+
+
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+
+
+
+            >
+
+
+
+            <android.support.v7.widget.CardView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/cardview2"
+                android:layout_centerInParent="true"
+
+                android:layout_margin="5dp"
+                android:clickable="true"
+                android:elevation="150dp"
+                android:layout_below="@+id/cardview1"
+                app:cardBackgroundColor="@color/color_sec"
+
+
+                android:foreground="?android:attr/selectableItemBackground"
+
+                app:cardCornerRadius="5dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    >
+
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_marginLeft="10dp"
+
+                        android:textColor="@color/colorPrimary"
+                        android:layout_height="wrap_content"
+                        android:textSize="20dp"
+                        android:text="Description"
+
+
+
+
+
+
+
+                        />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+
+                        android:textColor="@color/colorPrimary"
+                        android:layout_height="wrap_content"
+                        android:textSize="15dp"
+                        android:text="Avengers Infinity War is the third most expensive film made. The whole avenger series is purely amazing and fun to watch. The characters are loved and followed by many especially when it comes to dressing and style. It is in this film where this jacket was featured.
+
+Avengers Infinity War Classic Jacket is made of 100% original faux leather which makes it ery durable. The inner viscose lining keeps you warm and cozy from inside. The jacket is available in blue and black color which makes it very eye-catching. The white pattern on the left shoulder and armor like the look from the front and a patch on the shoulder give you a very strong look. The jacket comes with inner pockets and two front zipped pockets on the waist so you can keep your things safe. It features full sleeves, standup collar and zipper closure from the front. The jacket is available in various sizes with an additional option of tailor fitting if required
+Avengers Infinity War is the third most expensive film made. The whole avenger series is purely amazing and fun to watch. The characters are loved and followed by many especially when it comes to dressing and style. It is in this film where this jacket was featured."
+
+
+
+
+
+
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+
+                        />
+
+
+
+
+                </LinearLayout>
+
+
+
+
+
+
+
+
+
+
+                ></android.support.v7.widget.CardView>
+
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/cardview4"
+                android:layout_centerInParent="true"
+
+                android:layout_margin="5dp"
+                android:clickable="true"
+                android:elevation="150dp"
+                android:layout_below="@+id/cardview2"
+                app:cardBackgroundColor="@color/color_sec"
+
+
+                android:foreground="?android:attr/selectableItemBackground"
+
+                app:cardCornerRadius="5dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    >
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_marginLeft="10dp"
+
+
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="18dp"
+                        android:text="Sizes"
+
+
+
+
+
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+
+                        />
+
+
+                    <co.ceryle.segmentedbutton.SegmentedButtonGroup
+                        android:layout_marginBottom="10dp"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        app:sbg_animateSelector="accelerate"
+                        android:id="@+id/segmentedBtnGrp"
+                        app:sbg_animateSelectorDuration="1000"
+                        app:sbg_backgroundColor="@color/color_sec"
+                        app:sbg_dividerColor="@color/colorPrimary"
+                        app:sbg_dividerPadding="10dp"
+
+
+
+                        app:sbg_dividerSize="1dp"
+                        app:sbg_position="0"
+                        app:sbg_radius="2dp"
+                        app:sbg_ripple="true"
+                        app:sbg_rippleColor="@color/colorPrimary"
+                        app:sbg_selectorColor="@color/colorPrimary"
+                        app:sbg_selectorTextColor="@color/color_sec"
+                        app:sbg_shadow="true"
+                        app:sbg_shadowElevation="3dp"
+                        app:sbg_shadowMargin="4dp"
+
+                        >
+
+
+
+                        <Button
+                            android:layout_width="40dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="30dp"
+                            android:textColor="@color/colorPrimary"
+                            android:minHeight="10dp"
+                            android:id="@+id/sizebtn1"
+                            android:text="M"
+
+                            />
+                        <Button
+                            android:layout_width="40dp"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/colorPrimary"
+                            android:minHeight="10dp"
+
+                            android:layout_marginLeft="4dp"
+                            android:id="@+id/sizebtn2"
+
+                            android:text="L"
+                            />
+                        <Button
+                            android:layout_width="40dp"
+                            android:minHeight="10dp"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/colorPrimary"
+
+                            android:layout_marginLeft="4dp"
+
+                            android:id="@+id/sizebtn3"
+
+                            android:text="XL"
+                            />
+                        <Button
+                            android:layout_width="40dp"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/colorPrimary"
+                            android:minHeight="10dp"
+                            android:layout_marginLeft="4dp"
+                            android:id="@+id/sizebtn4"
+
+                            android:text="2-XL"
+                            />
+                        <Button
+                            android:layout_width="40dp"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/colorPrimary"
+                            android:layout_marginLeft="4dp"
+                            android:id="@+id/sizebtn5"
+                            android:minHeight="10dp"
+
+                            android:text="3-XL"
+                            />
+                        <Button
+                            android:layout_width="40dp"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/colorPrimary"
+                            android:layout_marginLeft="4dp"
+                            android:id="@+id/sizebtn6"
+                            android:minHeight="10dp"
+
+                            android:text="XS"
+                            />
+
+                    </co.ceryle.segmentedbutton.SegmentedButtonGroup>
+
+                    <View
+                        android:layout_width="fill_parent"
+                        android:layout_marginTop="4dp"
+                        android:layout_height="0.5dp"
+                        android:id="@+id/seperator1"
+                        android:layout_below="@+id/sizelayout"
+                        android:background="#c0c0c0"/>
+
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_marginLeft="10dp"
+
+                        android:textColor="@color/colorPrimary"
+                        android:layout_height="wrap_content"
+                        android:textSize="18dp"
+                        android:text="Quantity"
+
+
+
+
+
+
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+
+                        />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        >
+
+                        <ImageButton
+
+
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:id="@+id/textview_plus"
+                            android:background="@drawable/plus"
+
+
+
+                            android:layout_marginLeft="100dp"
+
+                            />
+
+
+                        <TextView
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="40dp"
+                            android:layout_marginLeft="30dp"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                            android:text="1"
+                            android:id="@+id/textview_quanity"
+                            />
+
+
+                        <ImageButton
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+
+                            android:background="@drawable/minus"
+                            android:id="@+id/button_minus"
+
+
+                            />
+
+
+
+                    </LinearLayout>
+
+
+
+
+
+                </LinearLayout>
+
+
+
+
+
+
+
+
+
+
+                ></android.support.v7.widget.CardView>
+
+
+
+
+            <Button
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                android:text="Add To Cart"
+                android:id="@+id/addtocart"
+                android:textColor="@color/color_sec"
+                />
+        </LinearLayout>
+
+
+    </android.support.v4.widget.NestedScrollView>
+</android.support.design.widget.CoordinatorLayout>
+

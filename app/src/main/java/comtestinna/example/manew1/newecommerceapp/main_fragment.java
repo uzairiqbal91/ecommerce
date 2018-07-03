@@ -2,6 +2,7 @@ package comtestinna.example.manew1.newecommerceapp;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -18,6 +19,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -45,6 +47,8 @@ public class main_fragment extends Fragment {
 
     CircleImageView menImageview;
     CircleImageView woemenImageView;
+
+    int position1;
 
 
     public main_fragment() {
@@ -151,8 +155,12 @@ public class main_fragment extends Fragment {
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-                // Toast.makeText(getApplicationContext(),String.valueOf(position),Toast.LENGTH_SHORT).show();
-                //Toast.makeText(getApplicationContext(),String.valueOf(pagerAdapter.getPageTitle(position)),Toast.LENGTH_SHORT).show();
+                 Toast.makeText(getActivity(),String.valueOf(position),Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(),String.valueOf(pagerAdapter.getPageTitle(position)),Toast.LENGTH_SHORT).show();
+
+                position1=position;
+
+
             }
 
             @Override
@@ -171,6 +179,32 @@ public class main_fragment extends Fragment {
             @Override
             public void onPageScrollStateChanged(int state) {
                 //Toast.makeText(getApplicationContext(),String.valueOf(position),Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+        TextView textview_viewall=rootView.findViewById(R.id.textview_viewall);
+        textview_viewall.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(position1==0)
+                {
+
+MainActivity.displayRecentListFragment();
+                }
+
+                if(position1==1)
+                {
+
+                    MainActivity.displayDealListFragment();
+                }
+
+                if(position1==2)
+                {
+
+                    MainActivity.displayTopSellerListFragment();
+                }
+
 
             }
         });
@@ -210,16 +244,23 @@ public class main_fragment extends Fragment {
 
     }
 
+//
+//    @Override
+//    public void onAttach(Context context) {
+//        super.onAttach(context);
+//        mActivity = getActivity();
+//    }
 
     @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        mActivity = getActivity();
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        mActivity = activity;
     }
+
     @Override
     public void onDetach() {
         super.onDetach();
-        mActivity = null;
+//        mActivity = null;
     }
     public class MyTimerTask extends TimerTask {
         @Override

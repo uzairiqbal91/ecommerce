@@ -296,7 +296,7 @@ swapFragment();
     @Override
     public void onDetach() {
         super.onDetach();
-        mActivity = null;
+      //  mActivity = null;
     }
     public class MyTimerTask extends TimerTask {
         @Override

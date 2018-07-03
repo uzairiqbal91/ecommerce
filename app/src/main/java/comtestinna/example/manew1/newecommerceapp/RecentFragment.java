@@ -38,13 +38,7 @@ public class RecentFragment extends Fragment {
 
 
 
-        mImageUrls.add(R.drawable.women1);
-        mNames.add("The Vegitarian");
-        mPrice.add("$100");
 
-        mImageUrls.add(R.drawable.women2);
-        mNames.add("The Vegitarian");
-        mPrice.add("$100");
 
         mImageUrls.add(R.drawable.women3);
         mNames.add("The Vegitarian");
